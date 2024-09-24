@@ -36,7 +36,11 @@ function comprobar(tipo) {
     numpregunta++;
 
     if (numpregunta == preguntas.length) {
-        location.href ="/html/pagina1.html";
+        location.href ="html/page1.html";
         numpregunta = 0;
     }
 };
+
+function corregirRespuesta() {
+    
+}
