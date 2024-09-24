@@ -1,0 +1,1 @@
+let idioma = prompt("Elije tu idioma ()");
