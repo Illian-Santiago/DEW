@@ -1,0 +1,10 @@
+main > div {
+    background-color: salmon;
+
+    
+    width: 30%;
+    height: 100%;
+
+    margin-top: 20%;
+    margin-left: 35%;
+}
