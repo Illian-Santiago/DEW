@@ -53,6 +53,7 @@ function cambiarColorCurso(curso) {
           
           tarjetasCursos[index].classList.remove('border-primary');
           tarjetasCursos[index].classList.remove('border-success');
+          tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$15';
 
           if (idCurso === id) { // Si el id del curso actual recorrido, coincide con el id del curso ha añadir
                tarjetasCursos[index].classList.add('border-primary');
