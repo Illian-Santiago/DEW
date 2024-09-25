@@ -39,11 +39,11 @@ function agregarCurso(e) {
           const curso = e.target.parentElement.parentElement;
           // Enviamos el curso seleccionado para tomar sus datos
           leerDatosCurso(curso);
-          cambiarColorCurso(curso);
+          cambiarCaracteristicasCurso(curso);
      }
 }
 
-function cambiarColorCurso(curso) {
+function cambiarCaracteristicasCurso(curso) {
      // Guardamos en variables el id y el nombre del autor del curso que vamos a añadir
      let id = curso.querySelector("a").getAttribute("data-id");
      let autorCurso = curso.querySelector('p').innerHTML;
@@ -56,7 +56,6 @@ function cambiarColorCurso(curso) {
 
           if (idCurso === id) { // Si el id del curso actual recorrido, coincide con el id del curso ha añadir
                tarjetasCursos[index].style.cssText = 'border-color: #0d6efd';
-               tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$10';
 
           } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso) {
                tarjetasCursos[index].style.cssText = 'border-color: #198754';
