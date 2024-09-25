@@ -1,10 +1,11 @@
 // Variables, debes hacer el querySelector adecuado
 
-const carrito =""; //Busca el primer elemento cuyo id sea "carrito"
-const listaCursos = ""; //Busca el primer elemento cuyo id sea "lista-cursos"
-const contenedorCarrito = ""; //Busca el primer elemento tbody dentro del elemento con id lista-carrito
-const vaciarCarritoBtn = ""; //Busca el primer elemento cuyo id sea vaciar-carrito
-const tarjetasCursos= ""; //Busca todos los elementos cuya clase sea curso
+const carrito = document.querySelector("#carrito");                                       // document.getElementById('carrito');                  Busca el primer elemento cuyo id sea "carrito"
+const listaCursos = document.querySelector("#lista-cursos");                              // document.getElementById('lista-cursos');             Busca el primer elemento cuyo id sea "lista-cursos"
+const contenedorCarrito = document.querySelector("#lista-carrito > tbody");               // document.getElementsByTagName('tbody')[0];           Busca el primer elemento tbody dentro del elemento con id lista-carrito
+const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");                       // document.getElementById('vaciar-carrito');           Busca el primer elemento cuyo id sea vaciar-carrito
+const tarjetasCursos= document.querySelectorAll(".curso");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
+
 let articulosCarrito = [];
 
 // Listeners
@@ -15,10 +16,10 @@ function cargarEventListeners() {
      listaCursos.addEventListener('click', agregarCurso);
 
      // Cuando se elimina un curso del carrito
-     //carrito.addEventListener('click', eliminarCurso);
+     carrito.addEventListener('click', eliminarCurso);
 
      // Al Vaciar el carrito
-     //vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+     vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 
 
      // NUEVO: Contenido cargado
@@ -45,10 +46,10 @@ function agregarCurso(e) {
 // Usa querySelector para encontrar los elementos que se indican
 function leerDatosCurso(curso) {
      const infoCurso = {
-          imagen: "", //La imagen del curso
-          titulo: "", //el título del curso
-          precio: "", //el precio con el descuento ya aplicado
-          id: "", //Vamos a buscar el data-id del curso, primero buca el elemento y luego accede al atributo
+          imagen: curso.querySelector("img").src,                          // La imagen del curso
+          titulo: curso.querySelector("h4").innerText,                     // El título del curso
+          precio: curso.querySelector("span.u-pull-right ").innerHTML,     // El precio con el descuento ya aplicado
+          id: curso.querySelector("a").getAttribute("data-id"),            // Vamos a buscar el data-id del curso, primero buca el elemento y luego accede al atributo
           cantidad: 1
      }
 
@@ -130,5 +131,5 @@ function vaciarCarrito() {
      // forma rapida (recomendada)
      while(contenedorCarrito.firstChild) {
           contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-      }
+     }
 }
