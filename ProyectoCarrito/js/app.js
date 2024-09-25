@@ -51,16 +51,15 @@ function cambiarColorCurso(curso) {
      for (let index = 0; index < tarjetasCursos.length; index++) {
           const idCurso = tarjetasCursos[index].querySelector("a").getAttribute("data-id");
           
-          tarjetasCursos[index].classList.remove('border-primary');
-          tarjetasCursos[index].classList.remove('border-success');
+          tarjetasCursos[index].style.cssText = 'border-color: white';
           tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$15';
 
           if (idCurso === id) { // Si el id del curso actual recorrido, coincide con el id del curso ha añadir
-               tarjetasCursos[index].classList.add('border-primary');
+               tarjetasCursos[index].style.cssText = 'border-color: #0d6efd';
                tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$10';
 
           } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso) {
-               tarjetasCursos[index].classList.add('border-success');
+               tarjetasCursos[index].style.cssText = 'border-color: #198754';
                tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$10';
           }
      }
