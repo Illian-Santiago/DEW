@@ -44,6 +44,7 @@ function agregarCurso(e) {
 }
 
 function cambiarColorCurso(curso) {
+     // Guardamos en variables el id y el nombre del autor del curso que vamos a añadir
      let id = curso.querySelector("a").getAttribute("data-id");
      let autorCurso = curso.querySelector('p').innerHTML;
 
@@ -53,7 +54,7 @@ function cambiarColorCurso(curso) {
           tarjetasCursos[index].classList.remove('border-primary');
           tarjetasCursos[index].classList.remove('border-success');
 
-          if (idCurso === id) { // Si el id del curso actual coincide con el id parametro
+          if (idCurso === id) { // Si el id del curso actual recorrido, coincide con el id del curso ha añadir
                tarjetasCursos[index].classList.add('border-primary');
                tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$10';
 
