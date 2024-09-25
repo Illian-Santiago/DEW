@@ -3,8 +3,7 @@ const carrito = document.querySelector("#carrito");                             
 const listaCursos = document.querySelector("#lista-cursos");                              // document.getElementById('lista-cursos');             Busca el primer elemento cuyo id sea "lista-cursos"
 const contenedorCarrito = document.querySelector("#lista-carrito > tbody");               // document.getElementsByTagName('tbody')[0];           Busca el primer elemento tbody dentro del elemento con id lista-carrito
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");                       // document.getElementById('vaciar-carrito');           Busca el primer elemento cuyo id sea vaciar-carrito
-const tarjetasCursos= document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
-const tarjetasCursos= document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
+const tarjetasCursos = document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');             Busca todos los elementos cuya clase sea curso
 
 let articulosCarrito = [];
 
