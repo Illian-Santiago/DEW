@@ -1,10 +1,9 @@
 // Variables, debes hacer el querySelector adecuado
-
 const carrito = document.querySelector("#carrito");                                       // document.getElementById('carrito');                  Busca el primer elemento cuyo id sea "carrito"
 const listaCursos = document.querySelector("#lista-cursos");                              // document.getElementById('lista-cursos');             Busca el primer elemento cuyo id sea "lista-cursos"
 const contenedorCarrito = document.querySelector("#lista-carrito > tbody");               // document.getElementsByTagName('tbody')[0];           Busca el primer elemento tbody dentro del elemento con id lista-carrito
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");                       // document.getElementById('vaciar-carrito');           Busca el primer elemento cuyo id sea vaciar-carrito
-const tarjetasCursos= document.querySelectorAll(".curso");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
+const tarjetasCursos= document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
 
 let articulosCarrito = [];
 
@@ -21,7 +20,6 @@ function cargarEventListeners() {
      // Al Vaciar el carrito
      vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 
-
      // NUEVO: Contenido cargado
      document.addEventListener('DOMContentLoaded', () => {
           articulosCarrito = JSON.parse( localStorage.getItem('carrito') ) || []  ;
@@ -34,11 +32,34 @@ function cargarEventListeners() {
 // Función que añade el curso al carrito
 function agregarCurso(e) {
      e.preventDefault();
+
      // Delegation para agregar-carrito
      if(e.target.classList.contains('agregar-carrito')) {
           const curso = e.target.parentElement.parentElement;
           // Enviamos el curso seleccionado para tomar sus datos
           leerDatosCurso(curso);
+          cambiarColorCurso(curso);
+     }
+}
+
+function cambiarColorCurso(curso) {
+     let id = curso.querySelector("a").getAttribute("data-id");
+     let autorCurso = curso.querySelector('p').innerHTML;
+
+     for (let index = 0; index < tarjetasCursos.length; index++) {
+          const idCurso = tarjetasCursos[index].querySelector("a").getAttribute("data-id");
+          const precioCurso = tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML;
+          
+          tarjetasCursos[index].classList.remove('border-primary');
+          tarjetasCursos[index].classList.remove('border-success');
+
+          if (idCurso === id) { // Si el id del curso actual coincide con el id parametro
+               tarjetasCursos[index].classList.add('border-primary');
+
+          } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso) {
+               tarjetasCursos[index].classList.add('border-success');
+               precioCurso = '$10';
+          }
      }
 }
 
@@ -70,13 +91,10 @@ function leerDatosCurso(curso) {
           articulosCarrito = [...articulosCarrito, infoCurso];
      }
 
-     console.log(articulosCarrito)
-
-     
-
-     // console.log(articulosCarrito)
+     // console.log(articulosCarrito);
      carritoHTML();
 }
+
 
 // Elimina el curso del carrito en el DOM
 function eliminarCurso(e) {
@@ -96,7 +114,6 @@ function eliminarCurso(e) {
 
 // Muestra el curso seleccionado en el Carrito
 function carritoHTML() {
-
      vaciarCarrito();
 
      articulosCarrito.forEach(curso => {
@@ -119,7 +136,6 @@ function carritoHTML() {
      sincronizarStorage();
 
 }
-
 
 // NUEVO: 
 function sincronizarStorage() {
