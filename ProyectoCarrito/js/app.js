@@ -61,19 +61,26 @@ function cambiarCaracteristicasCurso(curso) {
 
                if (precioOriginalCurso === 15) {
                     tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
+                    elementoDesccuento(tarjetasCursos[index]);
                }
           }
      }
 }
 
+
+function elementoDesccuento(curso) {
+     curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
+}
+
+
 // Lee los datos del curso
 // Usa querySelector para encontrar los elementos que se indican
 function leerDatosCurso(curso) {
      const infoCurso = {
-          imagen: curso.querySelector("img").src,                          // La imagen del curso
-          titulo: curso.querySelector("h4").innerText,                     // El título del curso
-          precio: curso.querySelector("span.u-pull-right ").innerHTML,     // El precio con el descuento ya aplicado
-          id: curso.querySelector("a").getAttribute("data-id"),            // Vamos a buscar el data-id del curso, primero buca el elemento y luego accede al atributo
+          imagen: curso.querySelector("img").src,                                // La imagen del curso
+          titulo: curso.querySelector("h4").textContent,                         // El título del curso
+          precio: curso.querySelector("span.u-pull-right ").textContent,         // El precio con el descuento ya aplicado
+          id: curso.querySelector("a").getAttribute("data-id"),                  // Vamos a buscar el data-id del curso, primero buca el elemento y luego accede al atributo
           cantidad: 1
      }
 
@@ -114,7 +121,6 @@ function eliminarCurso(e) {
           carritoHTML();
      }
 }
-
 
 // Muestra el curso seleccionado en el Carrito
 function carritoHTML() {
@@ -158,4 +164,5 @@ function vaciarCarrito() {
 function vaciarCesta () {
      vaciarCarrito();
      articulosCarrito = [];
+     sincronizarStorage();
 }
