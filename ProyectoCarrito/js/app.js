@@ -39,7 +39,7 @@ function agregarCurso(e) {
           const curso = e.target.parentElement.parentElement;
           // Enviamos el curso seleccionado para tomar sus datos
           leerDatosCurso(curso);
-          cambiarCaracteristicasCurso(curso);
+          // cambiarCaracteristicasCurso(curso);
      }
 }
 
@@ -61,6 +61,45 @@ function cambiarCaracteristicasCurso(curso) {
 
                if (precioOriginalCurso === 15) {
                     tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
+               }
+          }
+     }
+}
+
+function cambios() {
+     // Recojo el id de todos los articulos del carrito
+     const ids = [];
+
+     for (let index = 0; index < articulosCarrito.length; index++) {
+          ids.push(articulosCarrito[index].id);
+     }
+
+     // Aplico los cambios
+     let autorCurso;
+     let precioOriginalCurso;
+
+     // Busco tarjeta de id por id
+     for (let i = 0; i < ids.length; i++) {
+
+          // Recojo los datos de la tarjeta seleccionada
+          for (let index = 0; index < tarjetasCursos.length; index++) {
+               const idCurso = tarjetasCursos[index].querySelector("a").getAttribute("data-id");
+               
+               if (idCurso == ids[i]) {
+                    autorCurso = tarjetasCursos[index].querySelector('p').innerHTML;
+                    precioOriginalCurso = parseFloat(tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML.slice(1));
+
+                    tarjetasCursos[index].classList.remove('mismoAutor');
+                    tarjetasCursos[index].classList.add('enCarrito');
+               }else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso && !tarjetasCursos[index].classList.contains('enCarrito')) {
+                    tarjetasCursos[index].classList.add('mismoAutor');
+
+                    if (precioOriginalCurso === 15) {
+                         tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
+                    }
+               } else {
+                    tarjetasCursos[index].classList.remove('enCarrito');
+                    tarjetasCursos[index].classList.remove('mismoAutor');
                }
           }
      }
@@ -138,7 +177,7 @@ function carritoHTML() {
 
      // NUEVO:
      sincronizarStorage();
-
+     cambios();
 }
 
 // NUEVO: 
