@@ -3,7 +3,7 @@ const carrito = document.querySelector("#carrito");                             
 const listaCursos = document.querySelector("#lista-cursos");                              // document.getElementById('lista-cursos');             Busca el primer elemento cuyo id sea "lista-cursos"
 const contenedorCarrito = document.querySelector("#lista-carrito > tbody");               // document.getElementsByTagName('tbody')[0];           Busca el primer elemento tbody dentro del elemento con id lista-carrito
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");                       // document.getElementById('vaciar-carrito');           Busca el primer elemento cuyo id sea vaciar-carrito
-const tarjetasCursos = document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');             Busca todos los elementos cuya clase sea curso
+const tarjetasCursos = document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
 
 let articulosCarrito = [];
 
@@ -47,19 +47,18 @@ function cambiarCaracteristicasCurso(curso) {
      // Guardamos en variables el id y el nombre del autor del curso que vamos a añadir
      let id = curso.querySelector("a").getAttribute("data-id");
      let autorCurso = curso.querySelector('p').innerHTML;
+     let precioOriginalCurso = parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1));
 
      for (let index = 0; index < tarjetasCursos.length; index++) {
           const idCurso = tarjetasCursos[index].querySelector("a").getAttribute("data-id");
           
-          tarjetasCursos[index].style.cssText = 'border-color: white';
-          tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$15';
-
           if (idCurso === id) { // Si el id del curso actual recorrido, coincide con el id del curso ha añadir
-               tarjetasCursos[index].style.cssText = 'border-color: #0d6efd';
+               tarjetasCursos[index].classList.remove('mismoAutor');
+               tarjetasCursos[index].classList.add('enCarrito');
 
-          } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso) {
-               tarjetasCursos[index].style.cssText = 'border-color: #198754';
-               tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$10';
+          } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso && !tarjetasCursos[index].classList.contains('enCarrito')) {
+               tarjetasCursos[index].classList.add('mismoAutor');
+               tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = precioOriginalCurso - 5;
           }
      }
 }
@@ -92,7 +91,6 @@ function leerDatosCurso(curso) {
           articulosCarrito = [...articulosCarrito, infoCurso];
      }
 
-     // console.log(articulosCarrito);
      // console.log(articulosCarrito);
      carritoHTML();
 }
