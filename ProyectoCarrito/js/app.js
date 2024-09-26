@@ -58,7 +58,10 @@ function cambiarCaracteristicasCurso(curso) {
 
           } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso && !tarjetasCursos[index].classList.contains('enCarrito')) {
                tarjetasCursos[index].classList.add('mismoAutor');
-               tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
+
+               if (precioOriginalCurso === 15) {
+                    tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
+               }
           }
      }
 }
