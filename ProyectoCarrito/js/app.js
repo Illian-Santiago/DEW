@@ -39,7 +39,7 @@ function agregarCurso(e) {
           const curso = e.target.parentElement.parentElement;
           // Enviamos el curso seleccionado para tomar sus datos
           leerDatosCurso(curso);
-          cambiarCaracteristicasCurso(curso);
+          // cambiarCaracteristicasCurso(curso);
      }
 }
 
@@ -67,11 +67,9 @@ function cambiarCaracteristicasCurso(curso) {
      }
 }
 
-
 function elementoDesccuento(curso) {
      curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
 }
-
 
 // Lee los datos del curso
 // Usa querySelector para encontrar los elementos que se indican
@@ -144,7 +142,7 @@ function carritoHTML() {
 
      // NUEVO:
      sincronizarStorage();
-
+     cambios();
 }
 
 // NUEVO: 
