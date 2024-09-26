@@ -18,7 +18,7 @@ function cargarEventListeners() {
      carrito.addEventListener('click', eliminarCurso);
 
      // Al Vaciar el carrito
-     vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+     vaciarCarritoBtn.addEventListener('click', quitarArticulos);
 
      // NUEVO: Contenido cargado
      document.addEventListener('DOMContentLoaded', () => {
@@ -152,3 +152,7 @@ function vaciarCarrito() {
 }
 
 
+function quitarArticulos () {
+     vaciarCarrito();
+     articulosCarrito = [];
+}
