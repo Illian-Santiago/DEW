@@ -47,35 +47,33 @@ function cambiarCaracteristicasCurso(curso) {
      // Guardamos en variables el id y el nombre del autor del curso que vamos a añadir
      let id = curso.querySelector("a").getAttribute("data-id");
      let autorCurso = curso.querySelector('p').innerHTML;
-     let precioOriginalCurso = parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1));
 
      for (let index = 0; index < tarjetasCursos.length; index++) {
           const idCurso = tarjetasCursos[index].querySelector("a").getAttribute("data-id");
-          
+
           if (idCurso === id) { // Si el id del curso actual recorrido, coincide con el id del curso ha añadir
                tarjetasCursos[index].classList.remove('mismoAutor');
                tarjetasCursos[index].classList.add('enCarrito');
 
           } else if (tarjetasCursos[index].querySelector('p').innerHTML === autorCurso && !tarjetasCursos[index].classList.contains('enCarrito')) {
+               aplicarDescuento(tarjetasCursos[index]);
                tarjetasCursos[index].classList.add('mismoAutor');
-
-               if (precioOriginalCurso === 15) {
-                    aplicarDescuento(tarjetasCursos[index]);
-               }
           }
      }
 }
 
 function aplicarDescuento(curso) {
-     // Buscamos el precio original y el elemento donde se va a insertar el nuevo
-     let precioCurso = parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1));
-     curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
+     if (!curso.classList.contains('mismoAutor')) {
+          // Buscamos el precio original e insertamos el cartel de descuento
+          let precioCurso = parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1));
+          curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
 
-     // Tacho precio anterior con descuento e inserto el nuevo
-     curso.querySelector('span').classList.add('precio');
+          // Tacho precio anterior con descuento e inserto el nuevo
+          curso.querySelector('span').classList.add('precio');
 
-     curso.querySelector('span').insertAdjacentHTML('beforebegin', '<span class="u-pull-right"></span>')
-     curso.querySelector('.precio > span').innerHTML = '$' + (precioCurso-5);
+          curso.querySelector('span').insertAdjacentHTML('beforebegin', '<span class="u-pull-right"></span>')
+          curso.querySelector('.precio > span').innerHTML = '$' + (precioCurso-5);
+     }
 }
 
 // Lee los datos del curso
