@@ -4,6 +4,7 @@ const listaCursos = document.querySelector("#lista-cursos");                    
 const contenedorCarrito = document.querySelector("#lista-carrito > tbody");               // document.getElementsByTagName('tbody')[0];           Busca el primer elemento tbody dentro del elemento con id lista-carrito
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");                       // document.getElementById('vaciar-carrito');           Busca el primer elemento cuyo id sea vaciar-carrito
 const tarjetasCursos = document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
+const comprarCarritoBtn = document.querySelector("#vaciar-carrito");
 
 let articulosCarrito = [];
 
@@ -19,6 +20,9 @@ function cargarEventListeners() {
 
      // Al Vaciar el carrito
      vaciarCarritoBtn.addEventListener('click', vaciarCesta);
+
+     // Comprar carrito
+     comprarCarritoBtn.addEventListener('click', comprarCarrito);
 
      // NUEVO: Contenido cargado
      document.addEventListener('DOMContentLoaded', () => {
@@ -152,6 +156,10 @@ function carritoHTML() {
 // NUEVO: 
 function sincronizarStorage() {
      localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+}
+
+function comprarCarrito() {
+     
 }
 
 // Elimina los cursos del carrito en el DOM
