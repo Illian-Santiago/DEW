@@ -129,6 +129,10 @@ function eliminarCurso(e) {
      }
 }
 
+function pagar() {
+     alert('Servicio temporalmente inactivo, inténtelo más tarde');
+}
+
 // Muestra el curso seleccionado en el Carrito
 function carritoHTML() {
      vaciarCarrito();
@@ -159,7 +163,20 @@ function sincronizarStorage() {
 }
 
 function comprarCarrito() {
-     listaCursos.insertAdjacentHTML('beforeend', '<button id="BotonPago" class="u-pull-right">Pagar</button>');
+     let precioTotal = 100;
+     // Insertamos los nuevos elementos
+     listaCursos.insertAdjacentHTML('beforeend', '<div id="divPago" class="u-pull-right"></div>');
+
+     document.querySelector('#divPago').innerHTML = `
+          <h5>Total: $${precioTotal}</h5>
+          <button id="botonPago" class="u-pull-right">Pagar</button>
+     `;
+
+     // Se localiza el boton y se le añade el evento del alert
+     const pagarBtn = document.querySelector('#botonPago');
+
+     // Alert de servicio inactivo
+     pagarBtn.addEventListener('click', pagar);
 }
 
 // Elimina los cursos del carrito en el DOM
