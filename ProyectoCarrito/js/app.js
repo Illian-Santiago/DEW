@@ -163,7 +163,12 @@ function sincronizarStorage() {
 }
 
 function comprarCarrito() {
-     let precioTotal = 100;
+     let precioTotal = 0;
+     
+     articulosCarrito.forEach(curso => {
+          precioTotal += parseFloat(curso.precio.slice(1));
+     })
+
      // Insertamos los nuevos elementos
      listaCursos.insertAdjacentHTML('beforeend', '<div id="divPago" class="u-pull-right"></div>');
 
@@ -173,7 +178,7 @@ function comprarCarrito() {
      `;
 
      // Se localiza el boton y se le añade el evento del alert
-     const pagarBtn = document.querySelector('#botonPago');
+     let pagarBtn = document.querySelector('#botonPago');
 
      // Alert de servicio inactivo
      pagarBtn.addEventListener('click', pagar);
