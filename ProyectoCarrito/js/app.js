@@ -27,7 +27,6 @@ function cargarEventListeners() {
      // NUEVO: Contenido cargado
      document.addEventListener('DOMContentLoaded', () => {
           articulosCarrito = JSON.parse( localStorage.getItem('carrito') ) || []  ;
-          // console.log(articulosCarrito);
           carritoHTML();
      });
 }
@@ -36,7 +35,6 @@ function cargarEventListeners() {
 // Función que añade el curso al carrito
 function agregarCurso(e) {
      e.preventDefault();
-
 
      // Delegation para agregar-carrito
      if(e.target.classList.contains('agregar-carrito')) {
@@ -91,7 +89,6 @@ function leerDatosCurso(curso) {
           cantidad: 1
      }
 
-
      if( articulosCarrito.some( curso => curso.id === infoCurso.id ) ) { 
           const cursos = articulosCarrito.map( curso => {
                if( curso.id === infoCurso.id ) {
@@ -108,11 +105,8 @@ function leerDatosCurso(curso) {
           articulosCarrito = [...articulosCarrito, infoCurso];
      }
 
-     // console.log(articulosCarrito);
      carritoHTML();
 }
-
-
 
 // Elimina el curso del carrito en el DOM
 function eliminarCurso(e) {
@@ -127,11 +121,6 @@ function eliminarCurso(e) {
 
           carritoHTML();
      }
-}
-
-function pagar() {
-     alert('Servicio temporalmente inactivo, inténtelo más tarde');
-     vaciarCesta();
 }
 
 // Muestra el curso seleccionado en el Carrito
@@ -164,6 +153,7 @@ function sincronizarStorage() {
 }
 
 function comprarCarrito() {
+     // Calculamos precio total
      let precioTotal = 0;
      
      articulosCarrito.forEach(curso => {
@@ -182,15 +172,23 @@ function comprarCarrito() {
      console.log(listaCursos.querySelectorAll('.enCarrito'));
 
      tarjetasCursos.forEach(curso => {
+          let cursoID = curso.querySelector("a").getAttribute("data-id");
 
-          if (!curso.classList.contains('enCarrito')){
-               curso.remove();
-          }
+          articulosCarrito.forEach( articulo => {
+               if (cursoID != articulo.id) {
+                    curso.remove();
+               }
+          })
      })
 
      // Se localiza el boton y se le añade el evento del alert
      let pagarBtn = document.querySelector('#botonPago');
      pagarBtn.addEventListener('click', pagar);
+}
+
+function pagar() {
+     alert('Servicio temporalmente inactivo, inténtelo más tarde');
+     vaciarCesta();
 }
 
 // Elimina los cursos del carrito en el DOM
