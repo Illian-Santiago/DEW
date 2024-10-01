@@ -60,15 +60,22 @@ function cambiarCaracteristicasCurso(curso) {
                tarjetasCursos[index].classList.add('mismoAutor');
 
                if (precioOriginalCurso === 15) {
-                    tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
-                    elementoDesccuento(tarjetasCursos[index]);
+                    aplicarDescuento(tarjetasCursos[index]);
                }
           }
      }
 }
 
-function elementoDesccuento(curso) {
+function aplicarDescuento(curso) {
+     // Buscamos el precio original y el elemento donde se va a insertar el nuevo
+     let precioCurso = parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1));
      curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
+
+     // Tacho precio anterior con descuento e inserto el nuevo
+     curso.querySelector('span').classList.add('precio');
+
+     curso.querySelector('span').insertAdjacentHTML('beforebegin', '<span class="u-pull-right"></span>')
+     curso.querySelector('.precio > span').innerHTML = '$' + (precioCurso-5);
 }
 
 // Lee los datos del curso
