@@ -4,7 +4,7 @@ const listaCursos = document.querySelector("#lista-cursos");                    
 const contenedorCarrito = document.querySelector("#lista-carrito > tbody");               // document.getElementsByTagName('tbody')[0];           Busca el primer elemento tbody dentro del elemento con id lista-carrito
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");                       // document.getElementById('vaciar-carrito');           Busca el primer elemento cuyo id sea vaciar-carrito
 const tarjetasCursos = document.querySelectorAll(".card");                                // document.getElementsByClassName('curso');            Busca todos los elementos cuya clase sea curso
-const comprarCarritoBtn = document.querySelector("#vaciar-carrito");
+const comprarCarritoBtn = document.querySelector("#comprar-cesta");
 
 let articulosCarrito = [];
 
@@ -159,7 +159,7 @@ function sincronizarStorage() {
 }
 
 function comprarCarrito() {
-     
+     listaCursos.insertAdjacentHTML('beforeend', '<button id="BotonPago" class="u-pull-right">Pagar</button>');
 }
 
 // Elimina los cursos del carrito en el DOM
