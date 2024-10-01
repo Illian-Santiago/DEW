@@ -39,7 +39,7 @@ function agregarCurso(e) {
           const curso = e.target.parentElement.parentElement;
           // Enviamos el curso seleccionado para tomar sus datos
           leerDatosCurso(curso);
-          // cambiarCaracteristicasCurso(curso);
+          cambiarCaracteristicasCurso(curso);
      }
 }
 
@@ -61,15 +61,15 @@ function cambiarCaracteristicasCurso(curso) {
 
                if (precioOriginalCurso === 15) {
                     tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
-                    elementoDesccuento(tarjetasCursos[index]);
+                    // elementoDesccuento(tarjetasCursos[index]);
                }
           }
      }
 }
 
-function elementoDesccuento(curso) {
-     curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
-}
+// function elementoDesccuento(curso) {
+//      curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
+// }
 
 // Lee los datos del curso
 // Usa querySelector para encontrar los elementos que se indican
@@ -77,7 +77,7 @@ function leerDatosCurso(curso) {
      const infoCurso = {
           imagen: curso.querySelector("img").src,                                // La imagen del curso
           titulo: curso.querySelector("h4").textContent,                         // El título del curso
-          precio: curso.querySelector("span.u-pull-right ").textContent,         // El precio con el descuento ya aplicado
+          precio: curso.querySelector("span.u-pull-right").textContent,          // El precio con el descuento ya aplicado
           id: curso.querySelector("a").getAttribute("data-id"),                  // Vamos a buscar el data-id del curso, primero buca el elemento y luego accede al atributo
           cantidad: 1
      }
