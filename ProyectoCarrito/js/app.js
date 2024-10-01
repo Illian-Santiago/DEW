@@ -131,6 +131,7 @@ function eliminarCurso(e) {
 
 function pagar() {
      alert('Servicio temporalmente inactivo, inténtelo más tarde');
+     vaciarCesta();
 }
 
 // Muestra el curso seleccionado en el Carrito
@@ -177,10 +178,18 @@ function comprarCarrito() {
           <button id="botonPago" class="u-pull-right">Pagar</button>
      `;
 
+     // Quitamos los cursos que no estan seleccionados
+     console.log(listaCursos.querySelectorAll('.enCarrito'));
+
+     tarjetasCursos.forEach(curso => {
+
+          if (!curso.classList.contains('enCarrito')){
+               curso.remove();
+          }
+     })
+
      // Se localiza el boton y se le añade el evento del alert
      let pagarBtn = document.querySelector('#botonPago');
-
-     // Alert de servicio inactivo
      pagarBtn.addEventListener('click', pagar);
 }
 
