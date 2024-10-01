@@ -175,7 +175,7 @@ function comprarCarrito() {
           let cursoID = curso.querySelector("a").getAttribute("data-id");
 
           articulosCarrito.forEach( articulo => {
-               if (cursoID != articulo.id) {
+               if (cursoID !== articulo.id) {
                     curso.remove();
                }
           })
