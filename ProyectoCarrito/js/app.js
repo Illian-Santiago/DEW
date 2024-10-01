@@ -167,7 +167,7 @@ function comprarCarrito() {
      let precioTotal = 0;
      
      articulosCarrito.forEach(curso => {
-          precioTotal += parseFloat(curso.precio.slice(1));
+          precioTotal += parseFloat(curso.precio.slice(1)) * curso.cantidad;
      })
 
      // Insertamos los nuevos elementos
