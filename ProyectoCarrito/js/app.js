@@ -61,15 +61,15 @@ function cambiarCaracteristicasCurso(curso) {
 
                if (precioOriginalCurso === 15) {
                     tarjetasCursos[index].querySelector("span.u-pull-right ").innerHTML = '$' + (precioOriginalCurso-5);
-                    // elementoDesccuento(tarjetasCursos[index]);
+                    elementoDesccuento(tarjetasCursos[index]);
                }
           }
      }
 }
 
-// function elementoDesccuento(curso) {
-//      curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
-// }
+function elementoDesccuento(curso) {
+     curso.querySelector("h4").insertAdjacentHTML('afterend', '<div><p class="descuento">Descuento</p></div>');
+}
 
 // Lee los datos del curso
 // Usa querySelector para encontrar los elementos que se indican
@@ -142,7 +142,6 @@ function carritoHTML() {
 
      // NUEVO:
      sincronizarStorage();
-     cambios();
 }
 
 // NUEVO: 
