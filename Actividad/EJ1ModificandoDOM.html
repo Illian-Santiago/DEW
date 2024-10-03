@@ -11,20 +11,36 @@
 
 <body>
    <aside>
-      <input type="number" name="numeroParrafos" id="parrafo">
+      <h4>Parrafo seleccionado: <strong>1</strong></h4>
+      <!--Creador de parrafos-->
+      <div>
+         <input id="numeroDeParrafos" type="number" min="1">
+         <button id="creadorParrafo">Crear parrafo</button>
+      </div>
       
+      <!--Fuente-->
+      <div>
+      </div>
+
+      <!--Tamaño-->
       <div>
          <button type="submit" onclick="modificarTexto('aumentar', 0.05, document.getElementById('parrafo').value);">Agrandar</button>
          <button type="submit" onclick="modificarTexto('reducir', 0.05, document.getElementById('parrafo').value);">Reducir</button>
          <button type="submit" onclick="modificarTexto('original', 0.05, document.getElementById('parrafo').value);">Original</button>
+      </div>
+
+      <!--Color-->
+      <div>
+         <input id="parrafo" type="text">
          <button id="creadorParrafo">Crear parrafo</button>
       </div>
    </aside>
    
    <main>
+      <h1>Texto a agrandar, reducir o dejar de forma original</h1>
+
       <div class="contenedorParrafos">
-         <p id="parrafo1">Texto a agrandar, reducir o dejar de forma original<strong> id = parrafo1</strong></p>
-         <p id="parrafo2">Este es el segundo párrafo <strong> id = parrafo2</strong></p>
+         <p id="parrafo1"><strong>1º</strong> Párrafo</p>
       </div>
    </main>
 

@@ -1,5 +1,6 @@
 const creadorParrafos = document.querySelector('#creadorParrafo');
 const contenedorParrafos = document.querySelector('.contenedorParrafos');
+const casillaParrafoSeleccionado = document.querySelector('h4').querySelector('strong').textContent;
 
 let tamano = 1;
 let tamanoOriginal = 1;
@@ -36,15 +37,17 @@ function modificarTexto(elEvento, pixel, parrafo ){
 }
 
 function crearParrafos() {
-    let parrafosCrear = document.querySelector('#parrafo').value;
-    cogerDatosParrafos();
+    const parrafosCrear = document.querySelector('#numeroDeParrafos').value;
+    let numeroParrafo = 1;
+
+    contenedorParrafos.innerHTML = '<p></p>';
 
     for (let index = 0; index < parrafosCrear; index++) {
-        contenedorParrafos.insertAdjacentHTML('beforeend', '<p id="parrafo4">Este es el segundo párrafo <strong> id = parrafo2</strong></p>');
-    }
-}
+        let nuevoParrafo = document.createElement('p');
 
-function cogerDatosParrafos() {
-    return console.log(parseFloat(contenedorParrafos.lastElementChild.id.slice(7)));
-    // parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1))
+        nuevoParrafo.textContent = ''+ numeroParrafo +'º Párrafo';
+        contenedorParrafos.insertBefore(nuevoParrafo, contenedorParrafos.lastChild);
+
+        numeroParrafo++;
+    }
 }

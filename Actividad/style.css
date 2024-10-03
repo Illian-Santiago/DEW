@@ -3,18 +3,19 @@ body {
     display: flex;
 }
 
+main {
+    background-color: aqua;
+    margin-left: 10%;
+}
+
 aside {
+    color: aliceblue;
     background-color: black;
     text-align: center;
 }
 
 aside * {
     margin-top: 5%;
-}
-
-.contenedorParrafos {
-    background-color: aqua;
-    margin-left: 10%;
 }
 
 .contenedorParrafos * {
