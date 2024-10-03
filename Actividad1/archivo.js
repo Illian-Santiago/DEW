@@ -7,10 +7,10 @@ let tamanoOriginal = 1;
 
 creadorParrafos.addEventListener('click', crearParrafos);
 
-function modificarTexto(elEvento, pixel, parrafo ){
+function modificarTexto(elEvento, pixel, parrafo){
     let elemento = document.getElementById(parrafo);
 
-    switch(elEvento){
+    switch(elEvento) {
         case 'aumentar':
             if (tamano > 2){
                 alert('superado el tamaño máximo');
@@ -38,16 +38,10 @@ function modificarTexto(elEvento, pixel, parrafo ){
 
 function crearParrafos() {
     const parrafosCrear = document.querySelector('#numeroDeParrafos').value;
-    let numeroParrafo = 1;
 
-    contenedorParrafos.innerHTML = '<p></p>';
+    contenedorParrafos.innerHTML = '';
 
     for (let index = 0; index < parrafosCrear; index++) {
-        let nuevoParrafo = document.createElement('p');
-
-        nuevoParrafo.textContent = ''+ numeroParrafo +'º Párrafo';
-        contenedorParrafos.insertBefore(nuevoParrafo, contenedorParrafos.lastChild);
-
-        numeroParrafo++;
+        contenedorParrafos.insertAdjacentElement('beforeend', `<p id=""><strong></strong></p>`);
     }
 }
