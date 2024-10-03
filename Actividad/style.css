@@ -1,6 +1,22 @@
-.divParrafos {
-    border-width: 100px;
-    border-color: blue;
-    width: 100px;
-    height: 100px;
+body {
+    margin: 10px;
+    display: flex;
+}
+
+aside {
+    background-color: black;
+    text-align: center;
+}
+
+aside * {
+    margin-top: 5%;
+}
+
+.contenedorParrafos {
+    background-color: aqua;
+    margin-left: 10%;
+}
+
+.contenedorParrafos * {
+    margin-left: 5%;
 }

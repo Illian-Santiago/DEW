@@ -1,5 +1,5 @@
 const creadorParrafos = document.querySelector('#creadorParrafo');
-const divParrafos = document.querySelector('.divParrafos');
+const contenedorParrafos = document.querySelector('.contenedorParrafos');
 
 let tamano = 1;
 let tamanoOriginal = 1;
@@ -40,11 +40,11 @@ function crearParrafos() {
     cogerDatosParrafos();
 
     for (let index = 0; index < parrafosCrear; index++) {
-        divParrafos.insertAdjacentHTML('beforeend', '<p id="parrafo2">Este es el segundo párrafo <strong> id = parrafo2</strong></p>');
+        contenedorParrafos.insertAdjacentHTML('beforeend', '<p id="parrafo4">Este es el segundo párrafo <strong> id = parrafo2</strong></p>');
     }
 }
 
 function cogerDatosParrafos() {
-    return console.log(divParrafos.lastElementChild.id);
-    parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1))
+    return console.log(parseFloat(contenedorParrafos.lastElementChild.id.slice(7)));
+    // parseFloat(curso.querySelector("span.u-pull-right ").innerHTML.slice(1))
 }
