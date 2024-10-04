@@ -1,15 +1,18 @@
-const creadorParrafos = document.querySelector('#creadorParrafo');
+// Contenedores
 const contenedorParrafos = document.querySelector('.contenedorParrafos');
 const todosParrafos = document.querySelector('#todosParrafos');
 
-const botonAgrandar = document.querySelector('#botonAgrandar');
-const botonDisminuir = document.querySelector('#botonDisminuir');
-const botonOriginal = document.querySelector('#botonOriginal');
+// Botones
+const btncreadorParrafos = document.querySelector('#btncreadorParrafo');
+const btnAgrandar = document.querySelector('#btnAgrandar');
+const btnDisminuir = document.querySelector('#btnDisminuir');
+const btnOriginal = document.querySelector('#btnOriginal');
 
-creadorParrafos.addEventListener('click', crearParrafos);
-botonAgrandar.addEventListener('click', ()=>{datosTextoModificar('aumentar');});
-botonDisminuir.addEventListener('click', ()=>{datosTextoModificar('disminuir');} );
-botonOriginal.addEventListener('click', ()=>{datosTextoModificar('original');});
+// Eventos
+btncreadorParrafos.addEventListener('click', crearParrafos);
+btnAgrandar.addEventListener('click', ()=>{datosTextoModificar('aumentar');});
+btnDisminuir.addEventListener('click', ()=>{datosTextoModificar('disminuir');} );
+btnOriginal.addEventListener('click', ()=>{datosTextoModificar('original');});
 
 function datosTextoModificar(evento) {
     if (todosParrafos.checked) {
@@ -34,6 +37,7 @@ function datosTextoModificar(evento) {
 function modificarTamanoTexto (evento, parrafo) {
     const tamanoOriginal = 20;
     let tamano = parseInt(getComputedStyle(parrafo).fontSize);
+    let strongParrafo = parrafo.querySelector('strong');
 
     console.log(tamano);
     switch (evento) {
@@ -59,6 +63,7 @@ function modificarTamanoTexto (evento, parrafo) {
     }
 
     parrafo.style.fontSize = tamano + 'px';
+    strongParrafo.style.fontSize = tamano + 'px';
 }
 
 function crearParrafos() {
@@ -71,7 +76,6 @@ function crearParrafos() {
 
     for (let index = 0; index < parrafosCrear; index++) {
         contenedorParrafos.insertAdjacentHTML('beforeend', '<p id="parrafo'+ numeroParrafo +'"><strong>'+ numeroParrafo +'º</strong> Párrafo</p>');
-
         numeroParrafo++;
     }
 }
