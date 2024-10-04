@@ -11,11 +11,13 @@
 
 <body>
    <aside>
+      <input id="parrafoSeleccionado" type="text" placeholder="Ingrese el número del parrafo a modificar">
+      <label>Todos<input id="todosParrafos" type="checkbox"></label>
+
       <!--Creador de parrafos-->
       <div>
          <input id="numeroDeParrafos" type="number" min="1">
          <button id="btncreadorParrafo">Crear parrafo</button>
-         <p>Todos<input id="todosParrafos" type="checkbox"></p>
       </div>
       
       <!--Tamaño-->
@@ -27,14 +29,22 @@
 
       <!--Color-->
       <div>
-         <p>Color texto: </p>
+         <label>Color texto:</label>
          <input id="inputColor" type="color">
          <button id="btnAplicarColor" type="submit">Aplicar</button>
       </div>
 
       <!--Fuente-->
-      <input id="parrafoSeleccionado" type="text" placeholder="Ingrese el número del parrafo a modificar">
       <div>
+         <label>Elige una fuente de esta lista:<input id="inputFuente" list="fuentes"/></label>
+
+         <datalist id="fuentes">
+            <option value="Arial"></option>
+            <option value="Times"></option>
+            <option value="Courier"></option>
+         </datalist>
+
+         <button id="btnAplicarFuente">Aplicar</button>
       </div>
    </aside>
    
@@ -42,7 +52,7 @@
       <h1>Texto a agrandar, reducir o dejar de forma original</h1>
 
       <div class="contenedorParrafos">
-         <p id="parrafo1"><strong>1º</strong> Párrafo</p>
+         <p id="parrafo1" class="tamano2 Times"><strong>1º</strong> Párrafo</p>
       </div>
    </main>
 

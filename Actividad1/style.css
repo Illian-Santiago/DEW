@@ -24,5 +24,42 @@ aside * {
 
 .contenedorParrafos * {
     margin-left: 5%;
+}
+
+/*Tamaños*/
+.tamano1 {
+    font-size: 15px;
+}
+
+.tamano2 {
     font-size: 20px;
+}
+
+.tamano3 {
+    font-size: 25px;
+}
+
+.tamano4 {
+    font-size: 30px;
+}
+
+.tamano5 {
+    font-size: 35px;
+}
+
+.tamano6 {
+    font-size: 40px;
+}
+
+/*Fuentes*/
+.Arial {
+    font-family: 'Arial';
+}
+
+.Times {
+    font-family:'Times';
+}
+
+.Courier {
+    font-family: 'Courier';
 }
