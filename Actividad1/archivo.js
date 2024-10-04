@@ -1,39 +1,55 @@
 const creadorParrafos = document.querySelector('#creadorParrafo');
 const contenedorParrafos = document.querySelector('.contenedorParrafos');
+const todosParrafos = document.querySelector('#todosParrafos');
+
 const botonAgrandar = document.querySelector('#botonAgrandar');
 const botonDisminuir = document.querySelector('#botonDisminuir');
 const botonOriginal = document.querySelector('#botonOriginal');
 
-let tamano = 1;
-let tamanoOriginal = 1;
-
 creadorParrafos.addEventListener('click', crearParrafos);
-botonAgrandar.addEventListener('click', ()=>{modificarTexto('aumentar');} );
-botonDisminuir.addEventListener('click', ()=>{modificarTexto('disminuir');} );
-botonOriginal.addEventListener('click', modificarTexto);
+botonAgrandar.addEventListener('click', ()=>{datosTextoModificar('aumentar');});
+botonDisminuir.addEventListener('click', ()=>{datosTextoModificar('disminuir');} );
+botonOriginal.addEventListener('click', ()=>{datosTextoModificar('original');});
 
-function modificarTexto (evento) {
-    const pixel = 0.05;
-    
-    idParrafoSeleccionado = document.getElementById('parrafoSeleccionado').value;
-    parrafoSeleccionado = document.getElementById(idParrafoSeleccionado);
+function datosTextoModificar(evento) {
+    if (todosParrafos.checked) {
+        let listaTodosParrafos = contenedorParrafos.querySelectorAll('p');
 
+        for (let index = 0; index < listaTodosParrafos.length; index++) {
+            if (evento === 'aumentar' || evento === 'disminuir' || evento === 'original') {
+                modificarTamanoTexto(evento, listaTodosParrafos[index]);
+            }
+        }
+    } else {
+        let idParrafoSeleccionado = document.getElementById('parrafoSeleccionado').value;
+        let parrafoSeleccionado = document.getElementById(idParrafoSeleccionado);
+
+        
+        if (evento === 'aumentar' || evento === 'disminuir' || evento === 'original') {
+            modificarTamanoTexto(evento, parrafoSeleccionado);
+        }
+    }
+}
+
+function modificarTamanoTexto (evento, parrafo) {
+    const tamanoOriginal = 20;
+    let tamano = parseInt(getComputedStyle(parrafo).fontSize);
+
+    console.log(tamano);
     switch (evento) {
         case 'aumentar':
-            if (tamano>2) {
-                alert('superado el tamaño máximo');
+            if (tamano>=30) {
                 break;
             } else {
-                tamano = tamano + pixel;
+                tamano = tamano + 1;
                 break;
             }
 
         case 'disminuir':
-            if (tamano<.9) {
-                alert('superado el tamaño minimo');
+            if (tamano<=10) {
                 break;
             } else {
-                tamano = tamano - pixel;
+                tamano = tamano - 1;
                 break;
             }
 
@@ -42,7 +58,7 @@ function modificarTexto (evento) {
             break;
     }
 
-    parrafoSeleccionado.style.fontSize = tamano+'em';
+    parrafo.style.fontSize = tamano + 'px';
 }
 
 function crearParrafos() {
