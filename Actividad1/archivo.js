@@ -38,10 +38,15 @@ function modificarTexto(elEvento, pixel, parrafo){
 
 function crearParrafos() {
     const parrafosCrear = document.querySelector('#numeroDeParrafos').value;
+    let numeroParrafo = 1;
 
-    contenedorParrafos.innerHTML = '';
+    if (parrafosCrear) {
+        contenedorParrafos.innerHTML = '';
+    }
 
     for (let index = 0; index < parrafosCrear; index++) {
-        contenedorParrafos.insertAdjacentElement('beforeend', `<p id=""><strong></strong></p>`);
+        contenedorParrafos.insertAdjacentHTML('beforeend', '<p id="parrafo'+ numeroParrafo +'"><strong>'+ numeroParrafo +'º</strong> Párrafo</p>');
+
+        numeroParrafo++;
     }
 }
