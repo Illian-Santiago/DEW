@@ -11,8 +11,6 @@
 
 <body>
    <aside>
-      <input type="text" name="parrafo" id="parrafo">
-      <h4>Parrafo seleccionado: <strong>1</strong></h4>
       <!--Creador de parrafos-->
       <div>
          <input id="numeroDeParrafos" type="number" min="1">
@@ -20,20 +18,22 @@
       </div>
       
       <!--Fuente-->
+      <input id="parrafoSeleccionado" type="text" placeholder="Ingrese el número del parrafo a modificar">
       <div>
       </div>
 
       <!--Tamaño-->
       <div>
-         <button type="submit" onclick="modificarTexto('aumentar', 0.05, document.getElementById('parrafo').value);">Agrandar</button>
-         <button type="submit" onclick="modificarTexto('reducir', 0.05, document.getElementById('parrafo').value);">Reducir</button>
-         <button type="submit" onclick="modificarTexto('original', 0.05, document.getElementById('parrafo').value);">Original</button>
+         <button id="botonAgrandar" type="submit">Aumentar</button>
+         <button id="botonDisminuir" type="submit">Disminuir</button>
+         <button id="botonOriginal" type="submit">Original</button>
       </div>
 
       <!--Color-->
       <div>
-         <input id="parrafo" type="text">
-         <button id="creadorParrafo">Crear parrafo</button>
+         <p>Color texto: </p>
+         <input type="color">
+         <button type="submit">Aplicar</button>
       </div>
    </aside>
    

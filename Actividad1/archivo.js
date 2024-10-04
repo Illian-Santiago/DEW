@@ -1,39 +1,48 @@
 const creadorParrafos = document.querySelector('#creadorParrafo');
 const contenedorParrafos = document.querySelector('.contenedorParrafos');
-const casillaParrafoSeleccionado = document.querySelector('h4').querySelector('strong').textContent;
+const botonAgrandar = document.querySelector('#botonAgrandar');
+const botonDisminuir = document.querySelector('#botonDisminuir');
+const botonOriginal = document.querySelector('#botonOriginal');
 
 let tamano = 1;
 let tamanoOriginal = 1;
 
 creadorParrafos.addEventListener('click', crearParrafos);
+botonAgrandar.addEventListener('click', ()=>{modificarTexto('aumentar');} );
+botonDisminuir.addEventListener('click', ()=>{modificarTexto('disminuir');} );
+botonOriginal.addEventListener('click', modificarTexto);
 
-function modificarTexto(elEvento, pixel, parrafo){
-    let elemento = document.getElementById(parrafo);
+function modificarTexto (evento) {
+    const pixel = 0.05;
+    
+    idParrafoSeleccionado = document.getElementById('parrafoSeleccionado').value;
+    parrafoSeleccionado = document.getElementById(idParrafoSeleccionado);
 
-    switch(elEvento) {
+    switch (evento) {
         case 'aumentar':
-            if (tamano > 2){
+            if (tamano>2) {
                 alert('superado el tamaño máximo');
                 break;
-            } else{
+            } else {
                 tamano = tamano + pixel;
                 break;
             }
 
-        case 'reducir':
-            if (tamano < .9){
+        case 'disminuir':
+            if (tamano<.9) {
                 alert('superado el tamaño minimo');
                 break;
-            } else{
+            } else {
                 tamano = tamano - pixel;
                 break;
             }
 
-        case 'original':
+        default:
             tamano = tamanoOriginal;
             break;
     }
-    elemento.style.fontSize = tamano+'em';
+
+    parrafoSeleccionado.style.fontSize = tamano+'em';
 }
 
 function crearParrafos() {
