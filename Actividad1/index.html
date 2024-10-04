@@ -11,49 +11,65 @@
 
 <body>
    <aside>
-      <input id="parrafoSeleccionado" type="text" placeholder="Ingrese el número del parrafo a modificar">
-      <label>Todos<input id="todosParrafos" type="checkbox"></label>
-
+      
       <!--Creador de parrafos-->
       <div>
+         <h3>Administrar parrafos</h3>
          <input id="numeroDeParrafos" type="number" min="1">
-         <button id="btncreadorParrafo">Crear parrafo</button>
+         <button id="btncreadorParrafo">Aplicar</button>
+      </div>
+
+      <!--Seleccionador-->
+      <div>
+         <h3>Modificar parrafos</h3>
+         <input id="parrafoSeleccionado" type="text" placeholder="Por ejemplo(parrafo1)">
+         <label>Todos<input id="todosParrafos" type="checkbox"></label>
+         <button id="btnOriginal" type="submit">Original</button>
       </div>
       
       <!--Tamaño-->
       <div>
-         <button id="btnAgrandar" type="submit">Aumentar</button>
-         <button id="btnDisminuir" type="submit">Disminuir</button>
-         <button id="btnOriginal" type="submit">Original</button>
+         <p>
+            Tamaño:
+            <button id="btnAgrandar" type="submit">+</button>
+            <button id="btnDisminuir" type="submit">-</button>
+         </p>
       </div>
 
       <!--Color-->
       <div>
-         <label>Color texto:</label>
-         <input id="inputColor" type="color">
-         <button id="btnAplicarColor" type="submit">Aplicar</button>
+         <p>
+            Color:
+            <input id="inputColor" type="color">
+            <button id="btnAplicarColor" type="submit">Aplicar</button>
+         </p>
       </div>
 
       <!--Fuente-->
       <div>
-         <label>Elige una fuente de esta lista:<input id="inputFuente" list="fuentes"/></label>
+         <p>
+            Fuente:
+            <input id="inputFuente" list="fuentes"/>
+            
+            <datalist id="fuentes">
+               <option value="Arial"></option>
+               <option value="Times"></option>
+               <option value="Courier"></option>
+            </datalist>
 
-         <datalist id="fuentes">
-            <option value="Arial"></option>
-            <option value="Times"></option>
-            <option value="Courier"></option>
-         </datalist>
-
-         <button id="btnAplicarFuente">Aplicar</button>
+            <button id="btnAplicarFuente">Aplicar</button>
+         </p>
       </div>
    </aside>
    
-   <main>
-      <h1>Texto a agrandar, reducir o dejar de forma original</h1>
+   <main class="contenedorParrafos">
+      <article>
+         <h1>Texto a agrandar, reducir o dejar de forma original</h1>
 
-      <div class="contenedorParrafos">
-         <p id="parrafo1" class="tamano2 Times"><strong>1º</strong> Párrafo</p>
-      </div>
+         <div class="contenedorParrafos">
+            <p id="parrafo1" class="tamano2 Times"><strong>1º</strong> Párrafo</p>
+         </div>
+      </article>
    </main>
 
    <script src="archivo.js"></script>
