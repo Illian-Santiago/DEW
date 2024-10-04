@@ -14,25 +14,30 @@
       
       <!--Creador de parrafos-->
       <div>
-         <h3>Administrar parrafos</h3>
-         <input id="numeroDeParrafos" type="number" min="1">
-         <button id="btncreadorParrafo">Aplicar</button>
+         <p>
+            Crear parrafos:            
+            <input id="numeroDeParrafos" type="number" min="1">
+            <button id="btncreadorParrafo">Aplicar</button>
+         </p>
       </div>
 
       <!--Seleccionador-->
       <div>
-         <h3>Modificar parrafos</h3>
-         <input id="parrafoSeleccionado" type="text" placeholder="Por ejemplo(parrafo1)">
-         <label>Todos<input id="todosParrafos" type="checkbox"></label>
-         <button id="btnOriginal" type="submit">Original</button>
+         <p>
+            Parrafo seleccionado:
+            <input id="parrafoSeleccionado" type="text" placeholder="parrafo1">
+            
+            <input id="todosParrafos" type="checkbox" style="margin-left: 10%; width: 15px; margin-right: 0%;">
+            (todos)
+         </p>
       </div>
       
       <!--Tamaño-->
       <div>
          <p>
             Tamaño:
-            <button id="btnAgrandar" type="submit">+</button>
-            <button id="btnDisminuir" type="submit">-</button>
+            <button id="btnAgrandar">+</button>
+            <button id="btnDisminuir">-</button>
          </p>
       </div>
 
@@ -41,7 +46,7 @@
          <p>
             Color:
             <input id="inputColor" type="color">
-            <button id="btnAplicarColor" type="submit">Aplicar</button>
+            <button id="btnAplicarColor">Aplicar</button>
          </p>
       </div>
 
@@ -60,16 +65,16 @@
             <button id="btnAplicarFuente">Aplicar</button>
          </p>
       </div>
+
+      <button id="btnOriginal" style="margin-top:10%; margin-left:30%; width:34%; height:12%;"><strong>Original</strong></button>
    </aside>
    
-   <main class="contenedorParrafos">
-      <article>
-         <h1>Texto a agrandar, reducir o dejar de forma original</h1>
+   <main>
+      <h1>Texto a modificar</h1>
 
-         <div class="contenedorParrafos">
-            <p id="parrafo1" class="tamano2 Times"><strong>1º</strong> Párrafo</p>
-         </div>
-      </article>
+      <div id="contenedorParrafos">
+         <p id="parrafo1" class="tamano2 Times"><strong>1º</strong> Párrafo</p>
+      </div>
    </main>
 
    <script src="archivo.js"></script>

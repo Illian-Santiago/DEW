@@ -1,5 +1,5 @@
 // Contenedores
-const contenedorParrafos = document.querySelector('.contenedorParrafos');
+const contenedorParrafos = document.querySelector('#contenedorParrafos');
 const todosParrafos = document.querySelector('#todosParrafos');
 
 

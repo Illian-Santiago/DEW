@@ -1,21 +1,52 @@
+body {
+    display: flex;
+}
+
 main {
-    background-color: aqua;
+    text-align: center;
+    height: max-content;
+    margin-left: 20%;
 }
 
 aside {
-    background-color: chocolate;
-}
-
-main div {
-    flex: 2;
+    background-color: grey;
+    width: 330px;
+    height: 300px;
+    border-style: outset;
+    border-radius: 50px;
+    border-color: chocolate;
+    border-width: 10px;
+    box-shadow: 0 12px 16px 0 rgba(255,0,0,0.24), 0 17px 50px 0 rgba(255,0,0,0.19);
 }
 
 aside div {
     margin-top: 5%;
+    margin-left: 5%;
+    color: white;
 }
 
-h3 {
+input {
+    width: 50px;
+    border: none;
+}
+
+button {
+    background-color: rgb(30, 30, 255);
+    border: none;
+    color: white;
     text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:not(:last-child) {
+    border-bottom: none;
+}
+
+button:hover {
+    background-color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color: black;
 }
 
 /*Tamaños*/
