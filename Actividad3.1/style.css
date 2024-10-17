@@ -32,7 +32,6 @@ footer {
 }
 
 .row {
-    gap: 10px;
     margin-bottom: 5%;
 }
 
@@ -42,4 +41,27 @@ footer {
 
 .input-group:active{
     box-shadow: 10px 10px 5px #48ff00;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 10%;
+    font-size: small;
+}
+
+.primeros:hover {
+    box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+
+.segundos:hover {
+    box-shadow: 0 8px 16px 0 rgb(21, 255, 0);
+}
+
+.terceros:hover {
+    box-shadow: 0 8px 16px 0 rgb(255, 0, 0);
+}
+
+.resto:hover {
+    box-shadow: 0 8px 16px 0 rgb(0, 17, 255);
 }

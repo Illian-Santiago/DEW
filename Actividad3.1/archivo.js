@@ -1,5 +1,6 @@
 const arbol = document.querySelector('#arbol');
 const btn = document.querySelector('button');
+const baseEmpleados = document.querySelector('#baseEmpleados');
 const listaEmpleados = [
     { nombre: "Carlos García", cantidadVendida: 14500, foto: "img/hombre.png"},
     { nombre: "Ana López", cantidadVendida: 7890, foto: "img/mujer.png"},
@@ -23,44 +24,83 @@ const listaEmpleados = [
     { nombre: "José Medina", cantidadVendida: 19500, foto: "img/hombre.png"},
     { nombre: "Javier Fernández", cantidadVendida: 17350, foto: "img/hombre.png"}
 ];
+const listaEmpleadosOrdenados = listaEmpleados.sort(
+    function(empleadoActual, siguienteEmpleado) {
+        return (siguienteEmpleado.cantidadVendida - empleadoActual.cantidadVendida);
+    }
+);
 
 btn.addEventListener('click', dibujaArbolNavidad);
 
-function cargarImagenesEmpleados(numEmpleado){
-    const nuevaImagen = document.createElement('img');
+function crearCard(persona, numFila) {
+    const nuevaCarta = document.createElement('div');
     const fila = arbol.lastElementChild;
-    nuevaImagen.src = listaEmpleados[numEmpleado].foto;
-    nuevaImagen.style = "width: 100px;";
-    fila.appendChild(nuevaImagen);
+
+    nuevaCarta.classList.add('card');
+    nuevaCarta.innerHTML = `
+        <img src=` + listaEmpleados[persona].foto + ` alt="Avatar" style="width:100%;">
+        
+        <div>
+            <p><b>` + listaEmpleados[persona].nombre + `</b></p> 
+            <p><b>Vendido: </b>` + listaEmpleados[persona].cantidadVendida + `</p>
+        </div>
+    `;
+    
+    switch (numFila) {
+        case 1:
+            nuevaCarta.classList.add('primeros');
+        break;
+    
+        case 2:
+            nuevaCarta.classList.add('segundos');
+        break;
+        
+        case 3:
+            nuevaCarta.classList.add('terceros');
+        break;
+
+        default:
+            nuevaCarta.classList.add('resto');
+        break;
+    }
+
+    fila.appendChild(nuevaCarta);
 }
 
 function crearNuevaFila() {
     const nuevaFila = document.createElement('div');
-    nuevaFila.classList.add('row');
+
+    nuevaFila.classList = 'd-flex justify-content-around';
+
     arbol.insertAdjacentElement("beforeend", nuevaFila);
 }
 
 function dibujaArbolNavidad() {
-    btn.classList.add('d-none');
+    document.querySelector('footer').classList.add('d-none');
+
+    let numFila = 0;
     let numEmpleadosFila = 0;
     let numEmpleadosActual = 0;
 
-    for (let index = 0; index < listaEmpleados.length; index++) {
-        if (numEmpleadosActual >= numEmpleadosFila) {
-            crearNuevaFila();
-            numEmpleadosFila ++;
-            numEmpleadosActual = 0;
+    for (let index = 0; index < listaEmpleadosOrdenados.length; index++) {
+        if (index < baseEmpleados.value) {
+            if (numEmpleadosActual >= numEmpleadosFila) {
+                numFila ++;
+                crearNuevaFila();
+                numEmpleadosFila ++;
+                numEmpleadosActual = 0;
+            }
+    
+            crearCard(index, numFila);
+            numEmpleadosActual ++;
         }
-
-        cargarImagenesEmpleados(index);
-        numEmpleadosActual ++;
     }
 
     // Tronco
     const nuevaImagen = document.createElement('img');
 
     nuevaImagen.src = "img/LogoEmpresa.jpeg";
-    nuevaImagen.style = "width: 100px;";
+    nuevaImagen.style = "width: 10%;";
 
     arbol.appendChild(nuevaImagen);
 }
