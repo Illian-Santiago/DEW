@@ -113,10 +113,10 @@ function ponerNegrita(input, elemento) {
 
   for (let index = 1; index <= elemento.length; index++) {
     parte = elemento.substring(0,index);
-    console.log(input + ' - ' + elemento);
 
     if (input == parte) {
       console.log(elemento.substring(0,index));
+      console.log(elemento.substring(index,elemento.length))
     }
   }
 
