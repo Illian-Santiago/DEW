@@ -41,12 +41,14 @@ button:hover {
 input:focus {
   transform: scale(1.1);
   box-shadow: 0 3px 6px rgb(0, 17, 255), 0 3px 6px rgb(255, 0, 0);
+  margin-right: 15px;
 }
 
 input {
   font-size: 16px;
   padding: 10px 12px;
   outline: none;
+  margin-right: 5px;
 }
 
 button {
