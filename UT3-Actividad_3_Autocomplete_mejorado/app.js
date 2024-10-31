@@ -44,8 +44,6 @@ function autocomplete(event) {
     .map((result, index) => {
       const isSelected = index === 0;
 
-      ponerNegrita(inputElem.value, result.name.common);
-
       return `
         <li
           id='autocomplete-result-${index}'
@@ -119,8 +117,6 @@ function ponerNegrita(input, elemento) {
       console.log(elemento.substring(index,elemento.length))
     }
   }
-
-  // console.log(elemento.substring(0,1));
 }
 
 init();

@@ -18,7 +18,7 @@ body {
   background-repeat: no-repeat;
 }
 
-form {
+.busqueda {
   display: flex;
 }
 
@@ -63,17 +63,10 @@ svg {
 }
 
 ul {
-  position: absolute;
-  top: 100%;
-  margin-top: -1px;
-  width: 100%;
-  z-index: 1;
-  background: #fff;
-  margin: 0;
   list-style: none;
-  transition: none;
+  margin: 0;
   padding: 0;
-  border: 1px solid #bfc8c9;
+  justify-content: center;
 }
 
 strong, b {
@@ -81,13 +74,19 @@ strong, b {
 }
 
 ul li {
+  color: white;
+  margin-bottom: 5px;
   padding: 6px 12px;
   transition: 0.2s background;
   cursor: pointer;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+  border-radius: 20px;
+  text-align: center;
 }
 
 ul li:hover {
   background: #e6f0f2;
+  color: blue;
 }
 
 ul li + li {
