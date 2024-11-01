@@ -51,11 +51,12 @@ function autocomplete(event) {
           role='option'
           ${isSelected ? "aria-selected='true'" : ""}
         >
-        ${result.name.common}
+        ${result.name.common.replace(inputElem.value,'<strong>'+ inputElem.value +'</strong>')}
         </li>
       `;
     })
     .join("");
+    
   resultsElem.classList.remove("hidden");
 }
 
@@ -102,21 +103,6 @@ function selectItem(node) {
 function hideResults() {
   this.resultsElem.innerHTML = "";
   this.resultsElem.classList.add("hidden");
-}
-
-function ponerNegrita(input, elemento) {
-  let parte;
-  elemento = elemento.toLowerCase();
-  input = input.toLowerCase();
-
-  for (let index = 1; index <= elemento.length; index++) {
-    parte = elemento.substring(0,index);
-
-    if (input == parte) {
-      console.log(elemento.substring(0,index));
-      console.log(elemento.substring(index,elemento.length))
-    }
-  }
 }
 
 init();
