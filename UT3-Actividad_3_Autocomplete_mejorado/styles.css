@@ -4,7 +4,6 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 .container {
@@ -20,6 +19,10 @@ body {
 
 .busqueda {
   display: flex;
+}
+
+form {
+  position: relative;
 }
 
 input,
@@ -65,34 +68,54 @@ svg {
 }
 
 ul {
+  position: absolute;
+  left: 0;
+  width: 220px;
   list-style: none;
   margin: 0;
   padding: 0;
   justify-content: center;
+  margin-top: 5px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 strong, b {
   font-weight: bold;
+  color: forestgreen;
 }
 
 ul li {
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
   padding: 6px 12px;
-  transition: 0.2s background;
   cursor: pointer;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
   border-radius: 20px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 ul li:hover {
-  background: #e6f0f2;
-  color: blue;
-}
-
-ul li + li {
-  border-top: 1px solid #bfc8c9;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  border-bottom: 3px solid #4c00ff;
 }
 
 .hidden {

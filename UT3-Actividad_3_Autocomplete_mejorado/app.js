@@ -51,7 +51,7 @@ function autocomplete(event) {
           role='option'
           ${isSelected ? "aria-selected='true'" : ""}
         >
-        ${result.name.common.replace(inputElem.value,'<strong>'+ inputElem.value +'</strong>')}
+        ${result.name.common.replace(value,'<strong>'+ value +'</strong>')}
         </li>
       `;
     })
