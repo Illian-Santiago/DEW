@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Localstorage</title>
+    <title>Localstorage</title>
 
-        <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/15099/15099673.png">
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/128/15099/15099673.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <header><h1>Local Storage</h1></header>
+  <body>
+    <header><h1>Local Storage</h1></header>
 
-        <main>
-            <form method="post">
-                <label for="mensaje"><h2>Mi mensaje</h2></label>
-                <textarea id="mensaje" name="mensaje_usuario" placeholder="Hola mundo"></textarea>
-                <button>Agregar</button>
-            </form>
-        </main>
+    <div class="overlay" id="alert">
+      <div class="alert-box">
+        <h2>¡Alerta!</h2>
+        <p>Este es un mensaje de alerta centrado en la página.</p>
+        <button onclick="cerrarAlert()">Cerrar</button>
+      </div>
+    </div>
 
-        <footer>
-            <h2>Mis mensajes</h2>
-        </footer>
-    </body>
+    <main>
+      <form action="index.html">
+        <h2>Mi mensaje</h2>
+        <textarea id="mensaje" placeholder="Hola mundo"></textarea>
+        <button id="boton">Agregar</button>
+      </form>
+    </main>
+
+    <footer>
+      <h2>Mis mensajes</h2>
+      <div>
+        <p><strong>Illian:</strong> Hola mundo</p>
+      </div>
+    </footer>
+  </body>
+
+  <script src="script.js"></script>
 </html>
