@@ -3,6 +3,7 @@ const agregar = document.querySelector("#agregar");
 const contenedor = document.querySelector(".contenedor");
 const alertaInformativa = document.querySelector(".alertaInformativa");
 const alertaAdvertencia = document.querySelector(".alertaAdvertencia");
+const eliminarComentarios = document.querySelector(".eliminarComentarios");
 const comentario = {
   id: Date.now(),
   autor: "Tu: ",
@@ -33,10 +34,17 @@ function mostrarMensajes() {
       `<strong>` +
       comentarioActual.autor +
       `</strong>` +
-      comentarioActual.texto;
+      comentarioActual.texto +
+      `<button class="eliminarComentarios" onclick="eliminarComentario(` +
+      index +
+      `)">X</button>`;
 
     contenedor.appendChild(parrafo);
   }
+}
+
+function eliminarComentario(comentario) {
+  localStorage.removeItem(comentario);
 }
 
 function MostrarAlerta(tipo) {

@@ -41,7 +41,7 @@ textarea {
   max-width: 70%;
 }
 
-button {
+#agregar {
   padding: 3%;
   background-color: rgb(27, 175, 47);
   border-radius: 30px;
@@ -49,13 +49,13 @@ button {
   margin: 5%;
 }
 
-button:hover {
+#agregar:hover {
   transform: scale(1.1);
   box-shadow: 0 30px 8px black;
   transition: 0.7s;
 }
 
-button:active {
+#agregar:active {
   background-color: blue;
   transition: 0s;
 }
