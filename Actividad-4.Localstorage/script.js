@@ -1,9 +1,9 @@
 const mensaje = document.querySelector("textarea");
 const boton = document.querySelector("button");
 const contenedor = document.querySelector("div");
-const contenidoContenedor = "";
 const comentario = {
   id: Date.now(),
+  Autor: "Tu",
   texto: mensaje,
 };
 
@@ -11,43 +11,26 @@ boton.addEventListener("click", guardarMensaje);
 
 function guardarMensaje() {
   if (mensaje.value) {
-    localStorage.setItem(comentario.id, comentario.texto.value);
-    mostrarMensaje();
+    localStorage.setItem(localStorage.length, JSON.stringify(comentario));
   }
 }
 
-function mostrarMensaje() {
-  localStorage.forEach((mensaje) => {
-    const parrafo = document.createElement("p");
-    const strong = document.createElement("strong");
+function mostrarMensajes() {
+  for (let index = 0; index < localStorage.length; index++) {
+    console.log(localStorage.getItem(index));
 
-    strong.textContent = "fdsfdsf";
-    parrafo.textContent = "dfdsfdfddsffds";
+    // const parrafo = document.createElement("p");
 
-    parrafo.appendChild(strong);
-    contenedor.appendChild(parrafo);
-  });
+    // parrafo.innerHTML = `<strong>` + +`</strong> Hola mundo`;
+
+    // contenedor.appendChild(parrafo);
+  }
 }
 
-// Función para ocultar el alert después de 2 segundos
-setTimeout(() => {
-  document.getElementById("alert").style.display = "none";
-}, 2000); // 2000 milisegundos = 2 segundos
 
-console.log(localStorage);
+// setTimeout(() => {
+//   document.getElementById("alert").style.display = "none";
+// }, 2000);
 
-// localStorage.clear();
 
-// // Convertir el objeto a una cadena JSON
-// const personaJSON = JSON.stringify(comentario);
-
-// // Guardar el objeto en localStorage
-// localStorage.setItem("persona", personaJSON);
-
-// // Para verificar que se ha guardado correctamente, puedes recuperarlo
-// const personaGuardada = localStorage.getItem("persona");
-
-// // Convertir la cadena JSON de vuelta a un objeto
-// const personaObjeto = JSON.parse(personaGuardada);
-
-// console.log(personaObjeto); // { nombre: "Juan", edad: 30, ciudad: "Madrid" }
+mostrarMensajes();
