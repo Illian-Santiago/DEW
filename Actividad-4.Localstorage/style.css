@@ -60,20 +60,30 @@ button:active {
   transition: 0s;
 }
 
-#alert {
+.alerta {
   display: none;
   padding: 20px;
-  background-color: #f44336; /* Color de fondo rojo */
-  color: white; /* Color de texto blanco */
   margin-bottom: 15px;
-  position: fixed; /* Posiciona el alert */
-  top: 20px; /* Espaciado desde la parte superior */
-  right: 20px; /* Espaciado desde la derecha */
-  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-  border-radius: 5px; /* Bordes redondeados */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 5px;
 }
-.closebtn {
-  margin-left: 15px;
+
+.alertaInformativa,
+.alertaInformativa span {
+  background-color: blue;
   color: white;
+}
+
+.alertaAdvertencia,
+.alertaAdvertencia span {
+  background-color: yellow;
+  color: black;
+}
+
+.alerta .cerrarAlerta {
+  margin-left: 15px;
   cursor: pointer;
 }

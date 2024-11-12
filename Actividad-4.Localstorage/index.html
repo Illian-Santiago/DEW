@@ -16,25 +16,28 @@
   <body>
     <header><h1>Local Storage</h1></header>
 
-    <div id="alert">
-      Este es un mensaje de alerta.
-      <span class="closebtn" onclick="closeAlert()">×</span>
+    <div class="alerta alertaInformativa">
+      Se ha enviado el mensaje.
+      <span class="cerrarAlerta" onclick="cerrarAlerta('informativa')">X</span>
+    </div>
+
+    <div class="alerta alertaAdvertencia">
+      No se puede enviar un mensaje vacío.
+      <span class="cerrarAlerta" onclick="cerrarAlerta('advertencia')">X</span>
     </div>
 
     <main>
       <div class="form">
         <h2>Mi mensaje</h2>
-        <textarea id="mensaje" placeholder="Hola mundo"></textarea>
+        <textarea placeholder="Hola mundo"></textarea>
 
-        <button id="boton">Agregar</button>
+        <button id="agregar">Agregar</button>
       </div>
     </main>
 
     <footer>
       <h2>Mis mensajes</h2>
-      <div class="contenedor">
-        <p><strong>Illian:</strong> Hola mundo</p>
-      </div>
+      <div class="contenedor"></div>
     </footer>
   </body>
 

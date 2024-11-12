@@ -1,24 +1,27 @@
 const mensaje = document.querySelector("textarea");
-const boton = document.querySelector("button");
+const agregar = document.querySelector("#agregar");
 const contenedor = document.querySelector(".contenedor");
+const alertaInformativa = document.querySelector(".alertaInformativa");
+const alertaAdvertencia = document.querySelector(".alertaAdvertencia");
 const comentario = {
   id: Date.now(),
   autor: "Tu: ",
   texto: "",
 };
 
-boton.addEventListener("click", guardarMensaje);
+agregar.addEventListener("click", guardarMensaje);
 
 function guardarMensaje() {
   if (mensaje.value) {
     comentario.texto = mensaje.value;
     localStorage.setItem(localStorage.length, JSON.stringify(comentario));
     mensaje.textContent = "";
-  } else {
-    showAlert();
-  }
 
-  mostrarMensajes();
+    MostrarAlerta("informativa");
+    mostrarMensajes();
+  } else {
+    MostrarAlerta("advertencia");
+  }
 }
 
 function mostrarMensajes() {
@@ -36,17 +39,22 @@ function mostrarMensajes() {
   }
 }
 
-function showAlert() {
-  const alertBox = document.getElementById("alert");
-  alertBox.style.display = "block"; // Muestra el alert
+function MostrarAlerta(tipo) {
+  tipo == "informativa"
+    ? (alertaInformativa.style.display = "block")
+    : (alertaAdvertencia.style.display = "block");
 
-  // Desaparece automáticamente después de 2 segundos
   setTimeout(() => {
-    alertBox.style.display = "none";
+    tipo == "informativa"
+      ? cerrarAlerta("informativa")
+      : cerrarAlerta("advertencia");
   }, 2000);
 }
 
-function closeAlert() {
-  const alertBox = document.getElementById("alert");
-  alertBox.style.display = "none"; // Cierra el alert
+function cerrarAlerta(tipo) {
+  tipo == "informativa"
+    ? (alertaInformativa.style.display = "none")
+    : (alertaAdvertencia.style.display = "none");
 }
+
+mostrarMensajes();
