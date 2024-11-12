@@ -17,7 +17,8 @@ function guardarMensaje() {
 
 function mostrarMensajes() {
   for (let index = 0; index < localStorage.length; index++) {
-    console.log(localStorage.getItem(index));
+    const comentarioActual = JSON.parse(localStorage.getItem(index));
+    console.log(comentarioActual.id);
 
     // const parrafo = document.createElement("p");
 
