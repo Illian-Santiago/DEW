@@ -16,25 +16,23 @@
   <body>
     <header><h1>Local Storage</h1></header>
 
-    <!-- <div class="overlay" id="alert">
-      <div class="alert-box">
-        <h2>¡Alerta!</h2>
-        <p>Este es un mensaje de alerta centrado en la página.</p>
-        <button onclick="cerrarAlert()">Cerrar</button>
-      </div>
-    </div> -->
+    <div id="alert">
+      Este es un mensaje de alerta.
+      <span class="closebtn" onclick="closeAlert()">×</span>
+    </div>
 
     <main>
-      <form action="index.html">
+      <div class="form">
         <h2>Mi mensaje</h2>
         <textarea id="mensaje" placeholder="Hola mundo"></textarea>
+
         <button id="boton">Agregar</button>
-      </form>
+      </div>
     </main>
 
     <footer>
       <h2>Mis mensajes</h2>
-      <div>
+      <div class="contenedor">
         <p><strong>Illian:</strong> Hola mundo</p>
       </div>
     </footer>

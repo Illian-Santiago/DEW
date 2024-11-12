@@ -1,6 +1,6 @@
 const mensaje = document.querySelector("textarea");
 const boton = document.querySelector("button");
-const contenedor = document.querySelector("div");
+const contenedor = document.querySelector(".contenedor");
 const comentario = {
   id: Date.now(),
   autor: "Tu: ",
@@ -13,8 +13,12 @@ function guardarMensaje() {
   if (mensaje.value) {
     comentario.texto = mensaje.value;
     localStorage.setItem(localStorage.length, JSON.stringify(comentario));
-
+    mensaje.textContent = "";
+  } else {
+    showAlert();
   }
+
+  mostrarMensajes();
 }
 
 function mostrarMensajes() {
@@ -22,15 +26,27 @@ function mostrarMensajes() {
     const comentarioActual = JSON.parse(localStorage.getItem(index));
     const parrafo = document.createElement("p");
 
-    parrafo.innerHTML = `<strong>` + comentarioActual.autor + `</strong>` + comentarioActual.texto;
+    parrafo.innerHTML =
+      `<strong>` +
+      comentarioActual.autor +
+      `</strong>` +
+      comentarioActual.texto;
 
     contenedor.appendChild(parrafo);
   }
 }
 
-// setTimeout(() => {
-//   document.getElementById("alert").style.display = "none";
-// }, 2000);
+function showAlert() {
+  const alertBox = document.getElementById("alert");
+  alertBox.style.display = "block"; // Muestra el alert
 
+  // Desaparece automáticamente después de 2 segundos
+  setTimeout(() => {
+    alertBox.style.display = "none";
+  }, 2000);
+}
 
-mostrarMensajes();
+function closeAlert() {
+  const alertBox = document.getElementById("alert");
+  alertBox.style.display = "none"; // Cierra el alert
+}
