@@ -1,19 +1,12 @@
-// URL de la API de Naruto en español
-const apiUrl = 'https://naruto-api-rsl3.onrender.com/api/v1/characters';
+const enlace = 'https://narutodb.xyz/api/clan';
 
-// Función para obtener datos de la API
-async function obtenerDatosNaruto() {
-    try {
-        const respuesta = await fetch(apiUrl);
-        if (!respuesta.ok) {
-            throw new Error('Error en la red');
+fetch(enlace)
+    .then(data => {
+        if (!data.ok) {
+            throw Error(data.status);
         }
-        const datos = await respuesta.json();
-        console.log(datos);
-    } catch (error) {
-        console.error('Error al obtener los datos:', error);
-    }
-}
 
-// Llamar a la función
-obtenerDatosNaruto();
+        return data.json();
+    })
+    .then(update => { console.log(update) })
+    .catch(error => { console.log(error) })
