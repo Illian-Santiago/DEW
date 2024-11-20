@@ -1,14 +1,13 @@
 const consultarApi = document.querySelector("#consultarApi");
-// const termino = document.querySelector("textarea");
+const terminoBusqueda = document.querySelector("select");
 const div = document.querySelector("#apiData");
+const terminoElementos = terminoBusqueda.value + 's';
 
+consultarApi.addEventListener('click', verificarContenido);
 
-let enlace = 'https://narutodb.xyz/api/character';
-// let datos;
+function cargarDatos() {
+    const enlace = 'https://narutodb.xyz/api/' + terminoBusqueda.value;
 
-consultarApi.addEventListener('click', mostrarDatos);
-
-function mostrarDatos() {
     fetch(enlace)
         .then(consulta => { // Lo que devuelva la consulta a la API
             // Lo revisa y si todo esta bien devuelve la consulta en JSON, sino imprime el error.
@@ -18,9 +17,17 @@ function mostrarDatos() {
                 console.log(consulta.status);
             }
         })
-        .then(elementos =>
-            sessionStorage.setItem('characters', JSON.stringify(elementos))
-        );
+        .then(elementos => sessionStorage.setItem(terminoElementos, JSON.stringify(elementos)));
 }
 
-console.log(JSON.parse(sessionStorage.getItem('characters')));
+function recargarPagina() {
+    location.reload();
+}
+
+function verificarContenido() {
+    if (sessionStorage.getItem(terminoElementos) == null) {
+        cargarDatos()
+    }
+}
+
+console.log(JSON.parse(sessionStorage.getItem(terminoElementos)));
