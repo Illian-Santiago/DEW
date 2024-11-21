@@ -1,10 +1,11 @@
 const boton = document.querySelector("button");
 const terminoIngresado = document.querySelector("input");
+let pagina = 2;
 
 boton.addEventListener('click', verificarContenido);
 
 function cargarDatos() {
-    const enlace = 'https://narutodb.xyz/api/' + terminoIngresado.value;
+    const enlace = 'https://narutodb.xyz/api/' + terminoIngresado.value + '?page=' + pagina;
 
     fetch(enlace)
         .then(consulta => { // Lo que devuelva la consulta a la API
@@ -29,8 +30,7 @@ function verificarContenido() {
     }
 }
 
-function mostrarContenido(dato, contenedor) {
-    contenedor = contenedor;
+function mostrarContenido(dato) {
     console.log(dato);
 
     for (let index = 0; index < dato.length; index++) {
@@ -39,4 +39,9 @@ function mostrarContenido(dato, contenedor) {
         nuevoParrafo.textContent = termino;
         document.querySelector("main").appendChild(nuevoParrafo);
     }
+}
+
+
+if (sessionStorage.characters) {
+    mostrarContenido(JSON.parse(sessionStorage.getItem('characters')));
 }
