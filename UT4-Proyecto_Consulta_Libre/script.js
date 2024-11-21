@@ -18,6 +18,8 @@ function cargarDatos() {
             }
         })
         .then(elementos => sessionStorage.setItem(terminoElementos, JSON.stringify(elementos)));
+
+    // recargarPagina();
 }
 
 function recargarPagina() {
