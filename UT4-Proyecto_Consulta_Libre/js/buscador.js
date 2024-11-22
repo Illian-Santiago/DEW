@@ -1,4 +1,4 @@
-let opcionesDisponibles = ["character", "eeeeeeeeeeeeeeeeeeeee", "ioddffdjsdsf"];
+let opcionesDisponibles = ["character", "cha", "chamos", "chamitos", "eeeeeeeeeeeeeeeeeeeee", "ioddffdjsdsf"];
 let input = document.querySelector("input");
 let lista = document.querySelector("ul");
 
