@@ -46,6 +46,7 @@ header img {
 
 .busqueda {
     display: flex;
+    margin-bottom: 5%;
 }
 
 .busqueda input,
@@ -93,13 +94,13 @@ svg {
 }
 
 ul {
-    left: 0;
-    width: 220px;
+    position: absolute;
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: center;
-    margin-top: 5px;
+    width: 22.5%;
+    right: 4.8%;
+    justify-items: center;
     max-height: 400px;
     overflow-y: auto;
 }
@@ -118,7 +119,7 @@ ul::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
-ul li {
+li {
     color: white;
     margin-bottom: 7px;
     padding: 6px 12px;
