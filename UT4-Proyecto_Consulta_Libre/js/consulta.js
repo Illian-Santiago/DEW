@@ -1,11 +1,15 @@
-const boton = document.querySelector("button");
-const terminoIngresado = document.querySelector("input");
-let pagina = 2;
+const boton = document.querySelector("a");
+const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(0, -1);
+const consulta = contenido.slice(1, -1);
+const restablecer = document.querySelector("footer button");
 
+
+restablecer.addEventListener('click', () => { document.body.classList.add(".eleccion"); sessionStorage.clear(); location.reload(); });
 boton.addEventListener('click', verificarContenido);
 
+
 function cargarDatos() {
-    const enlace = 'https://narutodb.xyz/api/' + terminoIngresado.value + '?page=' + pagina;
+    const enlace = 'https://narutodb.xyz/api/' + consulta + '?limit=10000';
 
     fetch(enlace)
         .then(consulta => { // Lo que devuelva la consulta a la API
@@ -17,31 +21,41 @@ function cargarDatos() {
             }
         })
         .then(elementos => {
-            sessionStorage.setItem('characters', JSON.stringify(elementos.characters));
+            sessionStorage.setItem(contenido, JSON.stringify(elementos.characters));
             mostrarContenido(elementos.characters);
         });
 }
 
 function verificarContenido() {
-    if (sessionStorage.getItem(terminoIngresado.value + 's') == null) {
+    if (sessionStorage.getItem(contenido) == null) {
         cargarDatos()
     } else {
-        mostrarContenido(JSON.parse(sessionStorage.getItem('characters')))
+        mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)))
     }
 }
 
 function mostrarContenido(dato) {
-    console.log(dato);
+    document.querySelector("main").innerHTML = "";
+    document.body.classList.remove(".eleccion");
+    document.body.style.background = "chocolate";
+    document.querySelector(".buscador").style.display = "block";
+    restablecer.style.display = "block";
 
     for (let index = 0; index < dato.length; index++) {
-        const termino = dato[index].name;
-        const nuevoParrafo = document.createElement('p');
-        nuevoParrafo.textContent = termino;
-        document.querySelector("main").appendChild(nuevoParrafo);
+        const nuevaCard = document.createElement("div");
+        nuevaCard.className = "card";
+        nuevaCard.innerHTML = `
+            <img src="${dato[index].images}" alt="${dato[index].name}">
+            <div class="contenidoCarta">
+                <h2> ` + dato[index].name + ` </h2>
+            </div>
+            `;
+
+        document.querySelector("main").appendChild(nuevaCard);
     }
 }
 
 
 if (sessionStorage.characters) {
-    mostrarContenido(JSON.parse(sessionStorage.getItem('characters')));
+    mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)));
 }
