@@ -1,7 +1,8 @@
-const boton = document.querySelector("a");
 const btnPaginaPrincipal = document.querySelector("#paginaPrincipal");
 const restablecer = document.querySelector("#reestablecer");
 
+
+btnPaginaPrincipal.addEventListener('click', () => { location.reload() })
 
 restablecer.addEventListener('click', () => {
     document.body.classList.add(".eleccion");
@@ -9,11 +10,13 @@ restablecer.addEventListener('click', () => {
     document.body.removeChild(document.querySelector('script[src="../js/buscador.js"]')); // Elimina el script
     location.reload();
 });
-btnPaginaPrincipal.addEventListener('click', () => { location.reload() })
-boton.addEventListener('click', () => {
-    const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
 
-    verificarContenido(contenido, contenido.slice(0, -1))
+document.querySelectorAll("a").forEach((boton) => {
+    boton.addEventListener('click', () => {
+        const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
+        console.log(contenido);
+        verificarContenido(contenido, contenido.slice(0, -1))
+    });
 });
 
 
