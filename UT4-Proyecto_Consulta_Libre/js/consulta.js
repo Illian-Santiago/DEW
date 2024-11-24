@@ -35,11 +35,7 @@ function verificarContenido() {
 }
 
 function mostrarContenido(dato) {
-    document.querySelector("main").innerHTML = "";
-    document.body.classList.remove(".eleccion");
-    document.body.style.background = "chocolate";
-    document.querySelector(".buscador").style.display = "block";
-    restablecer.style.display = "block";
+    cambiarPagina();
 
     for (let index = 0; index < dato.length; index++) {
         const nuevaCard = document.createElement("div");
@@ -55,6 +51,13 @@ function mostrarContenido(dato) {
     }
 }
 
+function cambiarPagina() {
+    document.querySelector("main").innerHTML = "";
+    document.body.classList.remove(".eleccion");
+    document.body.style.background = "chocolate";
+    document.querySelector(".buscador").style.display = "block";
+    restablecer.style.display = "block";
+}
 
 if (sessionStorage.getItem(contenido)) {
     mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)));
