@@ -14,7 +14,6 @@ restablecer.addEventListener('click', () => {
 document.querySelectorAll("a").forEach((boton) => {
     boton.addEventListener('click', () => {
         const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
-        console.log(contenido);
         verificarContenido(contenido, contenido.slice(0, -1))
     });
 });
@@ -33,16 +32,22 @@ function cargarDatos(contenido, consulta) {
             }
         })
         .then(elementos => {
-            sessionStorage.setItem(contenido, JSON.stringify(elementos.characters));
-            mostrarContenido(elementos.characters);
+            switch (contenido) {
+                case "characters":
+                    sessionStorage.setItem(contenido, JSON.stringify(elementos.characters));
+                    mostrarContenido(elementos.characters);
+                    break;
+            }
+        }).catch(error => {
+            console.error('Error:', error);
         });
 }
 
 function verificarContenido(contenido, consulta) {
     if (sessionStorage.getItem(contenido) == null) {
-        cargarDatos(contenido, consulta)
+        cargarDatos(contenido, consulta);
     } else {
-        mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)))
+        mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)));
     }
 }
 
