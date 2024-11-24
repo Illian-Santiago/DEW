@@ -1,7 +1,8 @@
 const boton = document.querySelector("a");
 const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
 const consulta = contenido.slice(0, -1);
-const restablecer = document.querySelector("footer button");
+const btnPaginaPrincipal = document.querySelector("#paginaPrincipal");
+const restablecer = document.querySelector("#reestablecer");
 
 
 restablecer.addEventListener('click', () => {
@@ -10,7 +11,7 @@ restablecer.addEventListener('click', () => {
     document.body.removeChild(document.querySelector('script[src="../js/buscador.js"]')); // Elimina el script
     location.reload();
 });
-
+btnPaginaPrincipal.addEventListener('click', () => { location.reload() })
 boton.addEventListener('click', verificarContenido);
 
 
@@ -63,12 +64,9 @@ function cambiarPagina() {
     document.body.style.background = "chocolate";
     document.querySelector(".buscador").style.display = "block";
     restablecer.style.display = "block";
+    btnPaginaPrincipal.style.display = "block";
 
     const nuevoScript = document.createElement('script');
     nuevoScript.src = '../js/buscador.js';
     document.body.appendChild(nuevoScript);
-}
-
-if (sessionStorage.getItem(contenido)) {
-    mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)));
 }
