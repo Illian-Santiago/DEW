@@ -1,6 +1,4 @@
 const boton = document.querySelector("a");
-const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
-const consulta = contenido.slice(0, -1);
 const btnPaginaPrincipal = document.querySelector("#paginaPrincipal");
 const restablecer = document.querySelector("#reestablecer");
 
@@ -12,10 +10,14 @@ restablecer.addEventListener('click', () => {
     location.reload();
 });
 btnPaginaPrincipal.addEventListener('click', () => { location.reload() })
-boton.addEventListener('click', verificarContenido);
+boton.addEventListener('click', () => {
+    const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
+
+    verificarContenido(contenido, contenido.slice(0, -1))
+});
 
 
-function cargarDatos() {
+function cargarDatos(contenido, consulta) {
     const enlace = 'https://narutodb.xyz/api/' + consulta + '?limit=10000';
 
     fetch(enlace)
@@ -33,9 +35,9 @@ function cargarDatos() {
         });
 }
 
-function verificarContenido() {
+function verificarContenido(contenido, consulta) {
     if (sessionStorage.getItem(contenido) == null) {
-        cargarDatos()
+        cargarDatos(contenido, consulta)
     } else {
         mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)))
     }
