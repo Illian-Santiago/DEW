@@ -4,7 +4,13 @@ const consulta = contenido.slice(0, -1);
 const restablecer = document.querySelector("footer button");
 
 
-restablecer.addEventListener('click', () => { document.body.classList.add(".eleccion"); sessionStorage.clear(); location.reload(); });
+restablecer.addEventListener('click', () => {
+    document.body.classList.add(".eleccion");
+    sessionStorage.clear();
+    document.body.removeChild(document.querySelector('script[src="../js/buscador.js"]')); // Elimina el script
+    location.reload();
+});
+
 boton.addEventListener('click', verificarContenido);
 
 
@@ -57,6 +63,10 @@ function cambiarPagina() {
     document.body.style.background = "chocolate";
     document.querySelector(".buscador").style.display = "block";
     restablecer.style.display = "block";
+
+    const nuevoScript = document.createElement('script');
+    nuevoScript.src = '../js/buscador.js';
+    document.body.appendChild(nuevoScript);
 }
 
 if (sessionStorage.getItem(contenido)) {

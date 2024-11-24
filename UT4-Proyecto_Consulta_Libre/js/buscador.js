@@ -1,6 +1,7 @@
-let opcionesDisponibles = ["character", "cha", "chamos", "chamitos", "eeeeeeeeeeeeeeeeeeeee", "ioddffdjsdsf"];
-let input = document.querySelector("input");
-let lista = document.querySelector("ul");
+const personajes = JSON.parse(sessionStorage.getItem('characters'));
+const opcionesDisponibles = personajes.map(personaje => personaje.name);
+const input = document.querySelector("input");
+const lista = document.querySelector("ul");
 
 
 input.addEventListener("input", mostrarOpcionesActuales);
