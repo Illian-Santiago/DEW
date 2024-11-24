@@ -1,6 +1,6 @@
 const boton = document.querySelector("a");
-const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(0, -1);
-const consulta = contenido.slice(1, -1);
+const contenido = boton.parentElement.querySelector('h2').textContent.toLocaleLowerCase().slice(1, -1);
+const consulta = contenido.slice(0, -1);
 const restablecer = document.querySelector("footer button");
 
 
@@ -56,6 +56,6 @@ function mostrarContenido(dato) {
 }
 
 
-if (sessionStorage.characters) {
+if (sessionStorage.getItem(contenido)) {
     mostrarContenido(JSON.parse(sessionStorage.getItem(contenido)));
 }
