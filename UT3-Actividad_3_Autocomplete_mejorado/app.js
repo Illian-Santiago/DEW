@@ -98,6 +98,15 @@ function handleResultKeyDown(event) {
       cambiarSeleccionado(index);
       break;
 
+    case "ArrowDown":
+      index++;
+      cambiarSeleccionado(index);
+      break;
+
+    case "ArrowRight":
+      selectFirstResult();
+      break;
+
     default:
       return;
   }
