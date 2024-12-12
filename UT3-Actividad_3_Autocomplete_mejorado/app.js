@@ -8,6 +8,8 @@ var countries = [];
 var inputElem = null;
 var resultsElem = null;
 
+let index = 0;
+
 function init() {
   fetch("https://restcountries.com/v3.1/all")
     .then((response) => response.json())
@@ -57,7 +59,12 @@ function autocomplete(event) {
           role='option'
           ${isSelected ? "aria-selected='true'" : ""}
         >
-        ${result.name.common.replace(value, '<strong>' + value + '</strong>')}
+        ${result.name.common.replace(
+        // Se crea una expresión regular para buscar el value en cada país y lo reemplaza con un texto en negrita.
+        // g: búsqueda global (busca todas las ocurrencias en el texto).
+        // i: búsqueda insensible a mayúsculas y minúsculas.
+        new RegExp(value, 'gi'),
+        '<strong>$&</strong>')}
         </li>
       `;
     })
@@ -72,13 +79,33 @@ function handleResultClick(event) {
     selectItem(event.target);
   }
 }
+
 function handleResultKeyDown(event) {
   const { key } = event;
+  const elementoSeleccionado = resultsElem.querySelector(".selected");
+
   switch (key) {
     case "Backspace":
       return;
-    default:
-      selectFirstResult();
+
+    case "ArrowUp":
+      index--;
+      cambiarSeleccionado(index);
+      break;
+
+    case "ArrowDown":
+      index++;
+      cambiarSeleccionado(index);
+      break;
+  }
+
+  function cambiarSeleccionado(index) {
+    if (index >= 0 && index < resultsElem.children.length) {
+      elementoSeleccionado.classList.remove("selected");
+      resultsElem.children[index].classList.add("selected");
+    }
+
+    console.log(index);
   }
 }
 

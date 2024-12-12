@@ -121,3 +121,8 @@ ul li:hover {
 .hidden {
   display: none;
 }
+
+
+.selected {
+  background-color: #4c00ff;
+}
