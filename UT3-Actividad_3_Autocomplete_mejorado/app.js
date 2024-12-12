@@ -36,9 +36,15 @@ function autocomplete(event) {
     return;
   }
 
-  const results = countries.filter((country) => {
+  const empiezanValorIntroducido = countries.filter((country) => {
     return country.name.common.toLowerCase().startsWith(value.toLowerCase());
   });
+
+  const contienenValorIntroducido = countries.filter((country) => {
+    return country.name.common.toLowerCase().includes(value.toLowerCase()) && !country.name.common.toLowerCase().startsWith(value.toLowerCase());
+  });
+
+  const results = [...empiezanValorIntroducido, ...contienenValorIntroducido];
 
   resultsElem.innerHTML = results
     .map((result, index) => {
@@ -51,12 +57,12 @@ function autocomplete(event) {
           role='option'
           ${isSelected ? "aria-selected='true'" : ""}
         >
-        ${result.name.common.replace(value,'<strong>'+ value +'</strong>')}
+        ${result.name.common.replace(value, '<strong>' + value + '</strong>')}
         </li>
       `;
     })
     .join("");
-    
+
   resultsElem.classList.remove("hidden");
 }
 
