@@ -97,6 +97,9 @@ function handleResultKeyDown(event) {
       index++;
       cambiarSeleccionado(index);
       break;
+
+    default:
+      return;
   }
 
   function cambiarSeleccionado(index) {
@@ -109,22 +112,22 @@ function handleResultKeyDown(event) {
   }
 }
 
-// function selectFirstResult() {
-//   const value = inputElem.value;
-//   const autocompleteValue = resultsElem.querySelector(".selected");
+function selectFirstResult() {
+  const value = inputElem.value;
+  const autocompleteValue = resultsElem.querySelector(".selected");
 
-//   if (!value || !autocompleteValue) {
-//     return;
-//   }
+  if (!value || !autocompleteValue) {
+    return;
+  }
 
-//   if (value !== autocompleteValue.innerText) {
-//     inputElem.value = autocompleteValue.innerText;
-//     inputElem.setSelectionRange(
-//       value.length,
-//       autocompleteValue.innerText.length
-//     );
-//   }
-// }
+  if (value !== autocompleteValue.innerText) {
+    inputElem.value = autocompleteValue.innerText;
+    inputElem.setSelectionRange(
+      value.length,
+      autocompleteValue.innerText.length
+    );
+  }
+}
 
 function selectItem(node) {
   if (node) {
