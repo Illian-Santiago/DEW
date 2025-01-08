@@ -1,4 +1,6 @@
-import imageRickMortySonrisa from './img/descarga.jpg'
+import Characters from './components/Characters';
+import imageRickMortySonrisa from './img/rick-morty.png';
+import './App.css';
 import { useState } from 'react';
 
 function App() {
@@ -9,20 +11,18 @@ function App() {
     setCharacters(characterApi.results);
   }
 
-  console.log(characters);
-
   return (
-    <div>
-      <header>
-        <h1>App Rick and Morty</h1>
+    <div className='App'>
+      <header className='App-header'>
+        <h1 className="title">App Rick and Morty</h1>
 
         {characters ? (
-          <Characters></Characters>
+          <Characters Characters={characters} setCharacters={setCharacters}></Characters>
         ) : (
           <>
-            <img src={imageRickMortySonrisa} alt="Rick y morty"></img>
+            <img src={imageRickMortySonrisa} alt="Rick y morty" className='img-home'></img>
 
-            <button onClick={reqApi}>Buscar personaje</button>
+            <button onClick={reqApi} className='btn-search'>Buscar personaje</button>
           </>
         )}
       </header>
