@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
+import personaje from './Personajes';
+import { useState } from 'react';
+
 function App() {
+  const [personajes, setPersonajes] = useState(null);
+
+  const llamarApi = async () => {
+    const llamada = await fetch("https://narutodb.xyz/api/character");
+    const resultados = await llamada.json();
+    setPersonajes(resultados);
+  }
+
+  console.log(personajes);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={llamarApi}>Buscar personaje</button>
+    </>
   );
 }
 
